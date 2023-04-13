@@ -1,0 +1,822 @@
+
+
+
+
+#ccpDia .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+#ccpDia .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+#ccpDia .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+#ccpDia .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+#ccpDia .container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+#ccpDia .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+#ccpDia .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+#ccpDia .container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+#radio1,#radio1{
+  
+}
+
+.container {
+
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+select :hover{
+  background-color: gold;
+}
+
+select :disabled{
+  background-color: #999;
+
+}
+option{
+padding: auto;
+margin: auto;
+  width:650px;   
+}
+.classpeopleadd tr.over  {
+  background-color: #fff;
+}
+button{
+  cursor: pointer;
+
+}
+#clearList{
+  background-color: red;
+}
+#clearList:hover{
+  background-color: aqua;
+}
+
+#adminStuList{
+  background-color: rgb(182, 183, 243);
+}
+#adminStuList:hover{
+  background-color: aqua;
+}
+
+.deleteButtonClass{
+  background-color: red;
+}
+.deleteButtonClass:hover{
+  background-color: aqua;
+}
+
+
+.saveButtonClass{
+  background-color: greenyellow;
+}
+
+.saveButtonClass:hover{
+  background-color: aqua;
+}
+
+.cancelButtonClass{
+  background-color: yellow;
+}
+.cancelButtonClass:hover{
+  background-color: aqua;
+}
+
+.ui-widget {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 20px;
+}
+
+.ui-widget-content {
+    background: CC99FF;
+  /*Change the dialog border color here*/
+    border: 1px solid #04c585;
+    color: #222222;
+}
+
+.ui-dialog {
+    left: 0;
+    outline: 0 none;
+    padding: 0 !important;
+    position: absolute;
+    top: 0;
+}
+
+#success {
+    padding: 0;
+    margin: 0; 
+}
+
+.ui-dialog .ui-dialog-content {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    overflow: auto;
+    position: relative;
+    padding: 0 !important;
+}
+
+.ui-widget-header {
+  /*Change the Header color here*/
+    background: lightblue;
+    border: 5;
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    padding: 0.1em .5em;
+    position: relative;
+        font-size: 1em;
+}
+body {
+  background: magenta;
+}
+#addClass{
+  background-color: rgb(156, 168, 50);
+  color: white;
+}
+
+#addClass:hover{
+  background-color: aqua;
+}
+
+#genClassReport{
+  background-color: rgb(156, 168, 50);
+  color: white;
+}
+
+#genClassReport:hover{
+  background-color: aqua;
+}
+
+#seeClassAttan{
+  background-color: rgb(156, 168, 50);
+  color: white;
+}
+
+#seeClassAttan:hover{
+  background-color: aqua;
+}
+
+
+.ui-widget-overlay {
+  opacity: 0.5;
+  filter: Alpha(Opacity=50);
+  background-color: black;
+}
+.jjClose:hover{
+background-color: aqua;
+
+}
+#tmpButton1{
+  background-color: cadetblue;
+}
+#tmpButton1:hover{
+  background-color: aqua;
+}
+
+#arcButt,#canButt,#actButt{
+  background-color: rgb(156, 168, 50);
+  color: white;
+}
+
+#canButt:hover{
+  background-color: aqua;
+}
+
+#arcButt:hover{
+  background-color: aqua;
+}
+
+#actButt:hover{
+  background-color: aqua;
+}
+
+.myTarget {
+  font-weight: bold;
+  font-style: italic;
+  color: red;
+}
+
+.addClass:hover {
+  background-color: aqua;
+}
+input:focus ~ label,
+input:valid ~ label {
+  font-size: 0.75em;
+  color: #999;
+  top: -2.25rem;
+  transition: all 0.625s cubic-bezier(0.2, 0, 0.03, 1);
+}
+
+.ui-dialog-titlebar {
+  text-align: center;
+}
+.buttonTD:hover{
+  background-color: aqua;
+}
+
+#searchYearly{
+  background-color: rgb(149, 156, 255);
+}
+#searchYearly:hover{
+  background-color: aqua;
+}
+.overflow {
+  height: 200px;
+}
+.centerThings{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.wordHolder{
+
+  margin-left: 36%;
+
+
+}
+.wordHolder2{
+
+text-align: center;
+
+
+}
+.textareaThings{
+  margin-left: 20%;
+
+}
+#textareathings{
+  margin-left: 20%;
+  width:35%;
+  height: 60%;
+  resize: none;
+}
+#textareaThings2{
+  margin-left: 20%;
+
+}
+.textareaThings2{
+  margin-left: 36%;
+
+}
+.styled-input3{
+  left: 5%;
+  float: none;
+  width: 33.3333%;
+  margin: 2rem 0 1rem;
+  position: relative;
+}
+.styled-input2 {
+  left: 5%;
+  float: none;
+  width: 33.3333%;
+  margin: 2rem 0 1rem;
+  position: relative;
+}
+
+.styled-input2 label {
+
+  color: #999;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.25s cubic-bezier(0.2, 0, 0.03, 1);
+  pointer-events: none;
+  
+}
+
+.styled-input1 {
+  left: 36%;
+  float: none;
+  width: 33.3333%;
+  margin: 2rem 0 1rem;
+  position: relative;
+}
+
+#viewAttance:hover{
+  background-color: aqua;
+
+}
+
+#viewAttance{
+  border-radius: 30%;
+  margin: 1%;
+  background-color: rgb(149, 156, 255);
+  color: white;
+  background-color:rgb(149, 156, 255);
+}
+.styled-input1 label {
+
+  color: #999;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.25s cubic-bezier(0.2, 0, 0.03, 1);
+  pointer-events: none;
+}
+
+.styled-input {
+  float: right;
+  width: 33.3333%;
+  margin: 2rem 0 1rem;
+  position: relative;
+}
+
+.styled-input label {
+  color: #999;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.25s cubic-bezier(0.2, 0, 0.03, 1);
+  pointer-events: none;
+}
+
+
+.styled-input5 {
+  left:26%;
+  width: 33.3333%;
+  margin: 2rem 0 1rem;
+  position: relative;
+}
+
+.styled-input5 label {
+  color: #999;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.25s cubic-bezier(0.2, 0, 0.03, 1);
+  pointer-events: none;
+}
+
+
+input {
+  padding: 1rem 1rem;
+  border: 0;
+  border-bottom: 1px solid #999;
+  width: 84%;
+  font-size: 1rem;
+}
+
+input ~ span {
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #e91e63;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: all 0.625s cubic-bezier(0.2, 0, 0.03, 1);
+}
+
+input:focus {
+  outline: 0;
+}
+
+.classDesc textarea{
+  width: 100%;
+}
+
+
+input:focus ~ span {
+  width: 100%;
+  transition: all 0.625s cubic-bezier(0.2, 0, 0.03, 1);
+}
+
+tr:nth-child(even) {
+  background: lightblue;
+}
+tr:nth-child(odd) {
+  background: #fff;
+}
+
+#YOURCLASS {
+  background-color: rgb(207, 202, 202);
+}
+.tooltip2 {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip2 .tooltiptext2 {
+  visibility: hidden;
+  width: 260px;
+  background-color: darkseagreen;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: 20px;
+  border: 5px solid purple;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+  opacity: 0.2;  
+  transition: opacity 0.7s;  
+
+}
+
+.tooltip2:hover .tooltiptext2 {
+  visibility: visible;
+  opacity: 1;  
+  
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 260px;
+  background-color: darkseagreen;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px 0;
+  border: 5px solid purple;
+
+  font-size: 20px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  right: 105%;
+  opacity: 0.2;  
+  transition: opacity 0.7s;  
+
+}
+
+
+.textareaThings textarea{
+  border:#222222 solid 1.5px;
+  padding-bottom: 5px;
+  transition: 0.2s ease all;
+}
+
+.textareaThings textarea:focus{
+  outline: none;
+  border: 2px solid #e91e63;
+}
+
+.textareaThings textarea:hover{
+  border: 2px solid #e91e63;
+
+}
+
+
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;  
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.tablesort {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.tablesort2 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.tablesort3 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.buttonTD {
+  border-radius: 30%;
+  margin: 1%;
+  background-color: rgb(149, 156, 255);
+  color: white;
+}
+.buttonTD1 {
+  border-radius: 30%;
+  margin: 1%;
+  color: white;
+  background-color: rgb(149, 122, 90);
+}
+.buttonTD2 {
+  border-radius: 30%;
+  margin: 1%;
+  color: white;
+  background-color: rgb(116, 52, 63);
+}
+.statusBarAct {
+  width: 50%;
+  background-color: greenyellow;
+}
+.statusBarArc {
+  width: 50%;
+  background-color: lightslategrey;
+}
+.statusBarCan {
+  width: 50%;
+  background-color: rgb(253, 100, 100);
+}
+table {
+  font-size: 20px;
+}
+
+tr,
+td {
+  font-size: 20px;
+}
+
+tr:hover {
+  font-size: 20px;
+  background-color: gold;
+}
+.u-section-1 .u-sheet-1 {
+  min-height: 824px;
+}
+
+.u-section-1 .u-text-1 {
+  width: 561px;
+  margin: 45px auto 0;
+}
+
+.u-section-1 .u-text-2 {
+  margin: 52px 579px 0 0;
+}
+
+.u-section-1 .u-slider-1 {
+  width: 1078px;
+  min-height: 531px;
+  height: auto;
+  margin: 0 auto 60px;
+}
+
+.u-section-1 .u-carousel-indicators-1 {
+  position: absolute;
+  bottom: 10px;
+  width: auto;
+  height: auto;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 30px 60px;
+}
+
+.u-section-1 .u-image-1 {
+  height: 336px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.u-section-1 .u-text-3 {
+  margin: 20px auto 0;
+}
+
+.u-section-1 .u-text-4 {
+  margin: 20px 0 0;
+}
+
+.u-section-1 .u-carousel-item-2 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 30px 50px;
+}
+
+.u-section-1 .u-image-2 {
+  height: 368px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.u-section-1 .u-text-5 {
+  margin: 19px auto 0;
+}
+
+.u-section-1 .u-text-6 {
+  margin: 31px auto 0;
+}
+
+.u-section-1 .u-carousel-control-1 {
+  width: 38px;
+  height: 38px;
+  background-image: none;
+  left: 0;
+  position: absolute;
+  right: auto;
+}
+
+.u-section-1 .u-carousel-control-2 {
+  width: 38px;
+  height: 38px;
+  background-image: none;
+  left: auto;
+  position: absolute;
+  right: 0;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-text-2 {
+    margin-right: 379px;
+  }
+
+  .u-section-1 .u-slider-1 {
+    width: 940px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-text-2 {
+    margin-right: 159px;
+  }
+
+  .u-section-1 .u-slider-1 {
+    width: 720px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .u-section-1 .u-container-layout-2 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-text-1 {
+    width: 540px;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-right: 0;
+  }
+
+  .u-section-1 .u-slider-1 {
+    width: 540px;
+    min-height: 537px;
+  }
+
+  .u-section-1 .u-container-layout-2 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-text-1 {
+    width: 340px;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-top: 9px;
+  }
+
+  .u-section-1 .u-slider-1 {
+    min-height: 514px;
+    margin-top: 43px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+
+  .u-section-1 .u-image-1 {
+    height: 190px;
+  }
+}

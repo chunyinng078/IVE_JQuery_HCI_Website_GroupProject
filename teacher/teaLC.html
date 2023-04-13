@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+<head>
+
+    <script src="../jslib/jquery-3.6.0.js"></script>
+    <script src="../jslib/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jslib/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.css">
+
+
+
+    <script>
+
+        $(document).ready(function () {
+            $( "#datepicker" ).datepicker();
+
+      $(function () {
+
+        $("#classes").selectmenu().selectmenu("menuWidget").addClass("overflow");
+        $("#set20").selectmenu().selectmenu("menuWidget").addClass("overflow");
+        $("#set21").selectmenu().selectmenu("menuWidget").addClass("overflow");
+
+        $("#set2").selectmenu().selectmenu("menuWidget").addClass("overflow");
+
+        $("#set").selectmenu().selectmenu("menuWidget").addClass("overflow");
+
+        $("#set99").selectmenu().selectmenu("menuWidget").addClass("overflow");
+        $("#set100").selectmenu().selectmenu("menuWidget").addClass("overflow");
+        $("#set101").selectmenu().selectmenu("menuWidget").addClass("overflow");
+  
+      });
+      $('#classes66').change(function () {
+        var subjectCC = $('#classes66 option:selected').val();
+
+
+        $(this).parent().animate({
+            backgroundColor: "#2f78ed",
+          }, 250 ).animate({
+            backgroundColor: "#fff",
+          }, 250 );
+
+        if (subjectCC == "all") {
+            $(".jj123table").hide();
+            $(".jj123table").show();
+        } else if(subjectCC == "chinese"){
+
+            $(".jj123table").hide();
+            $("#chineseclass").show();
+
+        }
+        else {
+            $(".jj123table").hide();
+
+            $("#mathclass").show();
+        }
+    });
+
+
+
+
+    $('#classes77').change(function () {
+        var subjectCC = $('#classes77 option:selected').val();
+
+
+        $(this).parent().animate({
+            backgroundColor: "#2f78ed",
+          }, 250 ).animate({
+            backgroundColor: "#fff",
+          }, 250 );
+
+        if (subjectCC == "all") {
+            $(".jj123table").hide();
+            $(".jj123table").show();
+        } else if(subjectCC == "2"){
+
+            $(".jj123table").hide();
+            $("#chineseclass").show();
+
+        }
+        else {
+            $(".jj123table").hide();
+
+            $("#mathclass").show();
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+      
+            $('#classes2').change(function () {
+                var subjectCC = $('#classes2 option:selected').val();
+
+
+                $(this).parent().animate({
+                    backgroundColor: "#2f78ed",
+                  }, 250 ).animate({
+                    backgroundColor: "#fff",
+                  }, 250 );
+
+                if (subjectCC == "all") {
+                    $(".filess").hide();
+                    $(".filess").show();
+                } else if(subjectCC == "chinese"){
+                    $(".filess").hide();
+                    $("#chineseGood").show();
+
+                }
+                else {
+                    $(".filess").hide();
+                    $("#engGood").show();
+                    $("#engGood2").show();
+                }
+            });
+
+            $('#classes3').change(function () {
+                var subjectCC = $('#classes3 option:selected').val();
+
+                $(this).parent().animate({
+                    backgroundColor: "#2f78ed",
+                  }, 250 ).animate({
+                    backgroundColor: "#fff",
+                  }, 250 );
+
+                if (subjectCC == "all") {
+                    $(".filess").hide();
+                    $(".filess").show();
+                } else if(subjectCC == "1"){
+                    $(".filess").hide();
+                    $("#chineseGoodyr1").show();
+
+                }
+                else {
+                    $(".filess").hide();
+                    $("#chineseGoodyr2").show();
+
+                }
+            });
+
+            $('body').on('click', '.buttonTD', function () {
+                $("#ViewDia").dialog("open");
+            });
+            $('body').on('click', '.buttonTD1', function () {
+                $("#ManDia").dialog("open");
+            });
+            $('body').on('click', '.buttonTD2', function () {
+                $("#EditDia").dialog("open");
+            });
+            $("#actButt").click(function () {
+                $('input:checkbox:checked').parents("tr").find('td:eq(3)').html(" <button class='statusBarAct'>Active</button> ");
+                $('#changeDia').dialog('open');
+
+            })
+
+            $("#arcButt").click(function () {
+                $('input:checkbox:checked').parents("tr").find('td:eq(3)').html("<button class='statusBarArc'>Archived</button> ");
+                $('#changeDia').dialog('open');
+            })
+
+            $("#canButt").click(function () {
+                $('input:checkbox:checked').parents("tr").find('td:eq(3)').html("<button class='statusBarCan'>Canceled</button> ");
+                $('#changeDia').dialog('open');
+            })
+
+
+            $("#clearList").click(function () {
+                $("#rightProcess").html("")
+                $("#rightProcess").append("<option value='3'></option>")
+            });
+
+            $("#adminStuList").click(function () {
+                $("#rightProcess").append(" <option value='3'>Tommy</option><option value='4'>Tomson</option><option value='4'>Bobby</option><option value='4'>Edwin</option><option value='4'>Banana</option><option value='4'>Peter</option><option value='4'>Jasper</option><option value='4'>Sunny</option><option value='4'>Nick</option>")
+            });
+
+            $(function () {
+
+
+            });
+            $("#dialog1").dialog({
+                autoOpen: false
+            });
+
+            $("#opener").click(function () {
+                $("#dialog1").dialog('open');
+            });
+
+
+            $('table.tablesort th').on('click', function (e) {
+                sortTableByColumn(this)
+            })
+
+            function sortTableByColumn(tableHeader) {
+                // extract all the relevant details
+                let table = tableHeader.closest('table')
+                let index = tableHeader.cellIndex
+                let sortType = tableHeader.dataset.sortType
+                let sortDirection = tableHeader.dataset.sortDir || 'asc' // default sort to ascending
+
+                // sort the table rows
+                let items = Array.prototype.slice.call(table.rows);
+                let sortFunction = getSortFunction(sortType, index, sortDirection)
+                let sorted = items.sort(sortFunction)
+
+                // remove and re-add rows to table
+                for (let row of sorted) {
+                    let parent = row.parentNode
+                    let detatchedItem = parent.removeChild(row)
+                    parent.appendChild(row)
+                }
+
+                // reset heading values and styles
+                for (let header of tableHeader.parentNode.children) {
+                    header.classList.remove('currently-sorted')
+                    delete header.dataset.sortDir
+                }
+
+                // update this headers's values and styles
+                tableHeader.dataset.sortDir = sortDirection == 'asc' ? 'desc' : 'asc'
+                tableHeader.classList.add('currently-sorted')
+            }
+
+            function getSortFunction(sortType, index, sortDirection) {
+                let dir = sortDirection == 'asc' ? -1 : 1
+                switch (sortType) {
+                    case 'text': return stringRowComparer(index, dir);
+                    case 'numeric': return numericRowComparer(index, dir);
+                    default: return stringRowComparer(index, dir);
+                }
+            }
+
+            // asc = alphanumeric order - eg 0->9->a->z
+            // desc = reverse alphanumeric order - eg z->a->9->0
+            function stringRowComparer(index, direction) {
+                return (a, b) => -1 * direction * a.children[index].textContent.localeCompare(b.children[index].textContent)
+            }
+
+            // asc = higest to lowest - eg 999->0
+            // desc = lowest to highest - eg 0->999
+            function numericRowComparer(index, direction) {
+                return (a, b) => direction * (Number(a.children[index].textContent) - Number(b.children[index].textContent))
+            }
+
+
+
+
+
+            var keyword;
+            $("tr:odd").addClass("striped");
+
+            $(".tablesort").click(function () {
+                $("tr").removeClass("striped");
+                $("tr:odd").addClass("striped");
+            });
+
+            $('.styled-input2 input').keyup(function () {
+                var valthis = $(this).val().toLowerCase();
+                var num = 0;
+                $('select#leftProcess>option').each(function () {
+                    var length = $('#mySelectList > option').length;
+                    var length2 = $("leftProcess option[value='321']").length;
+
+                    var text = $(this).text().toLowerCase();
+                    if (text.indexOf(valthis) !== -1) { $(this).show(); }
+                    else { $(this).hide(); }
+
+
+                    if ($('.styled-input2 input').val().length > 0) {
+                        $("option[value=321]").remove();
+                        $('#leftProcess').append($('<option>', { value: '321', text: '' }));
+                    } else if (length2 > 2) {
+                        $("option[value=321]").remove();
+                        $('#leftProcess').append($('<option>', { value: '321', text: '' }));
+                    } else {
+                        $('#leftProcess').append($('<option>', { value: '321', text: '' }));
+                        $("option[value=321]").remove();
+                    }
+
+
+
+
+
+                });
+            });
+
+            $(".styled-input input").keyup(function () {
+                var keyword = $(this).val();
+
+                $("tr:not(tr:contains(keyword))").hide();
+                $("tr:contains(" + keyword + ")").show();
+                $("tr:contains(AY)").show();
+                var n = $('tr:visible').length;
+                if (!keyword) {
+                    $("tr").show();
+                }
+
+                var count = $(".noRec").length;
+
+                if ((n < 2)) {
+                    if ($("body").hasClass(".noRec")) {
+                        $(".noRec").html("");
+                    } else {
+                        $(".noRec").html("<div style='background-color:#ccc;color:red;text-align:center'><br><br>No Record Found! <a class='tooltip2'>ⓘ<span class='tooltiptext2'><p>Try check your input again! </p></span></a><br><br><br></div>");
+                    }
+                } else {
+                    $(".noRec").html("");
+                }
+            });
+            $(".buttonTD").mouseenter(function () {
+                $(this).css("background-color", "aqua");
+            });
+
+            $(".buttonTD").mouseleave(function () {
+                $(this).css("background-color", "rgb(149, 156, 255)");
+            });
+
+            $(".buttonTD1").mouseenter(function () {
+                $(this).css("background-color", "aqua");
+            });
+
+            $(".buttonTD1").mouseleave(function () {
+                $(this).css("background-color", "rgb(149, 122, 90)");
+            });
+
+            $(".buttonTD2").mouseenter(function () {
+                $(this).css("background-color", "aqua");
+            });
+
+            $(".buttonTD2").mouseleave(function () {
+                $(this).css("background-color", "rgb(116, 52, 63)");
+            });
+
+
+        });
+    </script>
+    <style type="text/css">
+        table.tablesort th.currently-sorted[data-sort-dir="asc"]::after {
+            content: "\25b2";
+        }
+
+        table.tablesort th.currently-sorted[data-sort-dir="desc"]::after {
+            content: "\25bc";
+        }
+
+        body,
+        td {
+            font-size: 10pt;
+        }
+
+        table,
+        th,
+        td {
+            border-bottom: 1px solid black;
+        }
+
+
+        table {
+            background-color: black;
+            border: 1px black solid;
+            border-collapse: collapse;
+            border-radius: 30px;
+        }
+
+        th {
+            border: 2px outset silver;
+            background-color: gray;
+            color: white;
+            cursor: pointer;
+
+
+        }
+
+        th:hover {
+
+            background-color: aqua;
+
+
+        }
+
+        tr {
+            background-color: white;
+            margin: 1px;
+        }
+
+        tr.striped {
+            background-color: lightblue;
+        }
+
+        tr.over {
+            background-color: gold;
+        }
+
+        td {
+            padding: 1px 8px;
+        }
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Welcome Back!!!">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Learning Center</title>
+    <link rel="stylesheet" href="nicepage1.css" media="screen">
+    <link rel="stylesheet" href="teaLC.css" media="screen">
+
+    <script class="u-script" type="text/javascript" src="nicepage1.js" defer=""></script>
+    <meta name="generator" content="Nicepage 3.26.0, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/1280px-VTC.svg.png"
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+
+
+
+
+    <script type="text/javascript">
+        $(function () {
+
+
+
+
+            $("#upload22").dialog({    //view view
+                'width': $(window).width() - 500,
+                'height': $(window).height() - 400,
+                autoOpen: false,
+                draggable: false,
+                show: "blind",
+                modal: true,
+                hide: "explode",
+                dialogClass: 'no-close success-dialog',
+
+
+                buttons: [
+        
+                    {
+                        text: "Cancel",
+                        "class": 'cancelButtonClass',
+
+                        style: "background-color:Yellow",
+                        click: function () {
+                            // Cancel code here
+                            $("#upload22").dialog("close");
+                            $(".filecontainer").append("<div class='filess' ><img  onClick='window.open('LearningMaterials.pdf');' id='pigpig' src='LIHKG%20Pig.png'><br>New File <button style='float: right;' class='delFile'>❌</button></div>");
+                            $("#classes2").parent().animate({
+                                backgroundColor: "#2f78ed",
+                              }, 250 ).animate({
+                                backgroundColor: "#fff",
+                              }, 250 );
+                        }
+                    }
+                ]
+
+            });
+
+            $("#fileUploader").click(function () {  //view button
+
+                $("#upload22").dialog("open");
+
+
+                return false;
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+            $("#ViewDia").dialog({    //view view
+                'width': $(window).width() - 300,
+                'height': $(window).height() - 200,
+                autoOpen: false,
+                draggable: false,
+                show: "blind",
+                modal: true,
+                hide: "explode",
+                dialogClass: 'no-close success-dialog',
+
+
+                buttons: [
+                {
+                    text: "Close Test",
+                    "class": 'cancelButtonClass',
+
+                    style: "background-color:GreenYellow",
+                    click: function () {
+                        // Cancel code here
+                        
+                        $("#ViewDia").dialog("close");
+                        $("#div1").animate({backgroundColor: '#2ACAEA'},400).animate({backgroundColor: '#afa'},400);
+                        document.getElementById("testTable").deleteRow(1);
+                        $('#testTable2').prepend($("<tr><td>100</td><td>1B</td><td>Chinese</td><td>30/11/2021</td><td><button class='statusBarAct'>View</button></td></tr>"));
+                        document.getElementById('testFrame').contentWindow.location.reload();
+                    }
+                },
+                    {
+                        text: "Cancel",
+                        "class": 'cancelButtonClass',
+
+                        style: "background-color:Yellow",
+                        click: function () {
+                            // Cancel code here
+                            $("#ViewDia").dialog("close");
+                        }
+                    }
+                ]
+
+            });
+
+            $(".statusBarAct").click(function () {  //view button
+
+                $("#ViewDia").dialog("open");
+
+
+                return false;
+
+            });
+
+            $("#ManDia").dialog({ // manage view
+                draggable: false,
+                'width': $(window).width() - 300,
+                'height': $(window).height() - 150,
+                autoOpen: false,
+
+                show: "blind",
+                modal: true,
+                hide: "explode",
+
+                buttons: [
+
+                    {
+                        text: "Close",
+                        "class": 'cancelButtonClass',
+                        style: "background-color:yellow",
+                        click: function () {
+                            $("#ManDia").dialog("close");
+                        }
+                    }
+                ]
+
+            });
+
+            $(".statusBarCan").click(function () { //maanage button
+
+                $("#ManDia").dialog("open");
+
+                return false;
+
+            });
+
+            $("#EditDia").dialog({    //edit view
+                draggable: false,
+                'width': $(window).width() - 300,
+                'height': $(window).height() - 300,
+                autoOpen: false,
+
+                show: "blind",
+                modal: true,
+                hide: "explode",
+
+                buttons: [
+                    {
+                        text: "Close",
+                        "class": 'saveButtonClass',
+                        "class": 'saveButtonClass',
+                        style: "background-color:yellow",
+                        click: function () {
+
+                            $("#EditDia").dialog("close");
+                        }
+                    }
+                ]
+
+            });
+
+            $("#func1").click(function () { //edit button
+
+                $("#EditDia").dialog("open");
+
+                return false;
+
+            });
+
+            $("#classAdder").dialog({   //add class
+                draggable: false,
+                'width': $(window).width() - 300,
+                'height': $(window).height() - 300,
+                autoOpen: false,
+
+                show: "blind",
+                modal: true,
+                hide: "explode",
+
+                buttons: [
+                    {
+                        text: "Close",
+                        "class": 'cancelButtonClass',
+                        click: function () {
+                            $(this).dialog("close");
+                            $("#classnameinput").val("");
+                            $(".classnameinput").val("");
+                        }
+                    }
+                ]
+
+            });
+
+            $("#myfile").click(function () {  //add class button
+
+                $("#classAdder").dialog("open");
+
+                return false;
+
+            });
+
+            $("#lrmain").dialog({   //add class
+                draggable: false,
+                'width': $(window).width() - 300,
+                'height': $(window).height() - 300,
+                autoOpen: false,
+
+                show: "blind",
+                modal: true,
+                hide: "explode",
+
+                buttons: [
+                    {
+                        text: "Close",
+                        "class": 'cancelButtonClass',
+                        click: function () {
+                            $(this).dialog("close");
+                            $("#classnameinput").val("");
+                            $(".classnameinput").val("");
+                        }
+                    }
+                ]
+
+            });
+
+            $("#func2").click(function () {  //add class button
+
+                //$("#classAdder").dialog("open");
+                $("#lrmain").dialog("open");
+
+                return false;
+
+            });
+
+
+            $("#testAdder").dialog({   //add class
+                draggable: false,
+                'width': $(window).width() - 300,
+                'height': $(window).height() - 200  ,
+                autoOpen: false,
+
+                show: "blind",
+                modal: true,
+                hide: "explode",
+
+                buttons: [
+                {
+                    text: "Save",
+                    style: "background-color:greenYellow",
+
+                    "class": 'cancelButtonClass',
+                    click: function () {
+                        if($("#testcodeinput").val()==""){
+                            alert("Please enter test code!");
+                            $("#testcodeinput").focus();
+
+                        }
+                        else if ($("#datepicker").val()==""){
+                            alert("Please enter date!");
+                            $("#datepicker").focus();
+                        }
+                        
+                        else if($("#classnameinput").val()==""){
+                            $("#classnameinput").focus();
+                            alert("Please enter questions!");
+                        }
+                        else if($("textareathings").val()=="" ){
+                            $("#textareathings").focus();
+
+                            alert("Please enter answers!");
+
+                        }
+                        else
+                        {
+                            
+                            $("#div1").animate({backgroundColor: '#2ACAEA'},400).animate({backgroundColor: '#afa'},400);
+                            $('#testTable').append($("<tr><td>188</td><td>1B</td><td>Math</td><td>31/12/2021</td><td><button class='statusBarAct'>View</button></td></tr>"));
+
+                            $(this).dialog("close");
+
+                        }
+
+                    }
+                },
+
+                    {
+                        text: "Close",
+                        "class": 'cancelButtonClass',
+                        click: function () {
+                            $(this).dialog("close");
+                            $("#classnameinput").val("");
+                            $(".classnameinput").val("");
+                        }
+                    }
+                ]
+
+            });
+
+            $("#addTest").click(function () {  //add class button
+
+                $("#testAdder").dialog("open");
+
+                return false;
+
+            });
+
+
+
+
+
+
+            //kkwong
+            $("#kkwong").dialog({   //add class
+                draggable: false,
+                'width': $(window).width() - 300,
+                'height': $(window).height() - 150  ,
+                autoOpen: false,
+
+                show: "blind",
+                modal: true,
+                hide: "explode",
+
+                buttons: [
+                {
+                    text: "Save",
+                    style: "background-color:greenYellow",
+
+                    "class": 'cancelButtonClass',
+                    click: function () {
+                      
+                            $(this).dialog("close");
+                            $("#successDia").dialog("open");
+
+
+                    }
+                },
+
+                    {
+                        text: "Close",
+                        "class": 'cancelButtonClass',
+                        click: function () {
+                            $(this).dialog("close");
+                            $("#classnameinput").val("");
+                            $(".classnameinput").val("");
+                        }
+                    }
+                ]
+
+            });
+
+            $(".viewclassfile").click(function () {  //add class button
+
+                $("#kkwong").dialog("open");
+
+                return false;
+
+            });
+
+
+
+
+
+
+
+            $("#onlineTools").dialog({    //view view
+                'width': $(window).width() - 300,
+                'height': $(window).height() - 200,
+                autoOpen: false,
+                draggable: false,
+                show: "blind",
+                modal: true,
+                hide: "explode",
+                dialogClass: 'no-close success-dialog',
+
+
+                buttons: [
+
+                    {
+                        text: "Cancel",
+                        "class": 'cancelButtonClass',
+
+                        style: "background-color:Yellow",
+                        click: function () {
+                            // Cancel code here
+                            $("#onlineTools").dialog("close");
+                        }
+                    }
+                ]
+
+            });
+
+            $("#func3").click(function () {  //view button
+
+                $("#onlineTools").dialog("open");
+
+
+                return false;
+
+            });
+
+
+
+
+
+
+            
+            $("#successDia").dialog({   //add class
+                position: { my: 'center', at: 'center', of: window },
+                'width': 450,
+                'height': 350,
+                autoOpen: false,
+                show: "blind",
+                hide: "explode",
+                open: function (event, ui) {
+                    setTimeout(function () {
+                        $('#successDia').dialog('close');
+                    }, 3000);
+                }
+            });
+            $("#savesuccessDia").dialog({   //add class
+                position: { my: 'center', at: 'center', of: window },
+                'width': 450,
+                'height': 350,
+                autoOpen: false,
+                show: "blind",
+                hide: "explode",
+                open: function (event, ui) {
+                    setTimeout(function () {
+                        $('#savesuccessDia').dialog('close');
+                    }, 3000);
+                }
+            });
+            $("#changeDia").dialog({   //add class
+                position: { my: 'center', at: 'center', of: window },
+                'width': 450,
+                'height': 350,
+                autoOpen: false,
+                show: "blind",
+                hide: "explode",
+                open: function (event, ui) {
+                    setTimeout(function () {
+                        $('#changeDia').dialog('close');
+                    }, 3000);
+                }
+            });
+
+            $("#informer").dialog({   //add class
+                position: { my: 'center', at: 'center', of: window },
+                'width': 450,
+                'height': 350,
+                autoOpen: false,
+                show: "blind",
+                hide: "explode",
+                open: function (event, ui) {
+                    setTimeout(function () {
+                        $('#informer').dialog('close');
+                    }, 3000);
+                }
+            });
+            
+            $("#informthem").click(function () {  //add class button
+
+                $("#informer").dialog("open");
+
+                return false;
+
+            });
+        });
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body class="u-body">
+    <header class="u-clearfix u-header u-palette-1-light-2 u-sticky u-sticky-875e u-header" id="sec-738b">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <a href="index.html" class="u-image u-logo u-image-1" data-image-width="1280" data-image-height="864">
+                <img src="images/1280px-VTC.svg.png" class="u-logo-image u-logo-image-1">
+            </a>
+            <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+                <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+                    <a class="u-button-style u-custom-active-color u-custom-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                        href="#">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+                        </svg>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <defs>
+                                <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
+                                    <rect y="1" width="16" height="2"></rect>
+                                    <rect y="7" width="16" height="2"></rect>
+                                    <rect y="13" width="16" height="2"></rect>
+                                </symbol>
+                            </defs>
+                        </svg>
+                    </a>
+                </div>
+                <div class="u-custom-menu u-nav-container">
+                    <ul class="u-nav u-unstyled u-nav-1">
+                        <li class="u-nav-item"><a
+                                class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                href="index.html" style="padding: 10px 20px;">Home</a>
+                        </li>
+                        <li class="u-nav-item"><a
+                                class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                href="teAC1.html" style="padding: 10px 20px;">Account Management</a>
+                        </li>
+                        <li class="u-nav-item"><a
+                                class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                href="teaCA.html" style="padding: 10px 20px;">Class allocation</a>
+                        </li>
+                        <li class="u-nav-item"><a
+                                class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                href="teaSR.html" style="padding: 10px 20px;">Searching &amp; reporting</a>
+                        </li>
+                        <br>
+                        <li class="u-nav-item"><a
+                            class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                            href="teTA.html" style="padding: 10px 20px;">Attendance Management
+                        </a>
+                    </li>
+                    <li class="u-nav-item"><a
+                            class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                            href="teaLC.html" style="padding: 10px 20px;">Learning Center</a>
+                    </li>
+                    </ul>
+                </div>
+                <div class="u-custom-menu u-nav-container-collapse">
+                    <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                        <div class="u-inner-container-layout u-sidenav-overflow">
+                            <div class="u-menu-close"></div>
+                            <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html"
+                                        style="padding: 10px 20px;">Home</a>
+                                </li>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="teAC1.html"
+                                        style="padding: 10px 20px;">Account
+                                        Management</a>
+    
+                                </li>
+                                <li class="u-nav-item"><a
+                                        class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                        href="teaCA.html" style="padding: 10px 20px;">Class allocation</a>
+                                </li>
+                                <li class="u-nav-item"><a
+                                        class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                        href="stRE.html" style="padding: 10px 20px;">Searching &amp; reporting</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="u-custom-menu u-nav-container-collapse">
+                            <div
+                                class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                                <div class="u-inner-container-layout u-sidenav-overflow">
+                                    <div class="u-menu-close"></div>
+                                    <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
+                                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html"
+                                                style="padding: 10px 20px;">Home</a>
+                                        </li>
+                                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="teAC1.html"
+                                                style="padding: 10px 20px;">Account
+                                                Management</a>
+    
+                                        </li>
+                                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="teaCA.html"
+                                                style="padding: 10px 20px;">Class allocation</a>
+                                        </li>
+                                        <li class="u-nav-item"><a class="u-button-style u-nav-link" href="teaSR.html"
+                                                style="padding: 10px 20px;">Searching &amp; reporting</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+                        </div>
+            </nav><span class="u-icon u-icon-circle u-text-white u-icon-1" data-href="../login/login.html"><svg
+                    class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512.00533 512" style="">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-cb6c"></use>
+                </svg><svg class="u-svg-content" viewBox="0 0 512.00533 512" id="svg-cb6c">
+                    <path
+                        d="m320 277.335938c-11.796875 0-21.332031 9.558593-21.332031 21.332031v85.335937c0 11.753906-9.558594 21.332032-21.335938 21.332032h-64v-320c0-18.21875-11.605469-34.496094-29.054687-40.554688l-6.316406-2.113281h99.371093c11.777344 0 21.335938 9.578125 21.335938 21.335937v64c0 11.773438 9.535156 21.332032 21.332031 21.332032s21.332031-9.558594 21.332031-21.332032v-64c0-35.285156-28.714843-63.99999975-64-63.99999975h-229.332031c-.8125 0-1.492188.36328175-2.28125.46874975-1.027344-.085937-2.007812-.46874975-3.050781-.46874975-23.53125 0-42.667969 19.13281275-42.667969 42.66406275v384c0 18.21875 11.605469 34.496093 29.054688 40.554687l128.386718 42.796875c4.351563 1.34375 8.679688 1.984375 13.226563 1.984375 23.53125 0 42.664062-19.136718 42.664062-42.667968v-21.332032h64c35.285157 0 64-28.714844 64-64v-85.335937c0-11.773438-9.535156-21.332031-21.332031-21.332031zm0 0">
+                    </path>
+                    <path
+                        d="m505.75 198.253906-85.335938-85.332031c-6.097656-6.101563-15.273437-7.9375-23.25-4.632813-7.957031 3.308594-13.164062 11.09375-13.164062 19.714844v64h-85.332031c-11.777344 0-21.335938 9.554688-21.335938 21.332032 0 11.777343 9.558594 21.332031 21.335938 21.332031h85.332031v64c0 8.621093 5.207031 16.40625 13.164062 19.714843 7.976563 3.304688 17.152344 1.46875 23.25-4.628906l85.335938-85.335937c8.339844-8.339844 8.339844-21.824219 0-30.164063zm0 0">
+                    </path>
+                </svg></span><span class="u-icon u-icon-circle u-text-palette-1-base u-icon-2" data-href="teAC2.html"><svg
+                    class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 55 55" style="">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3350"></use>
+                </svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-3350"
+                    style="enable-background:new 0 0 55 55;">
+                    <path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
+    c0.058,0.049,0.121,0.089,0.179,0.137c0.474,0.393,0.965,0.766,1.465,1.127c0.162,0.117,0.324,0.234,0.489,0.348
+    c0.534,0.368,1.082,0.717,1.642,1.048c0.122,0.072,0.245,0.142,0.368,0.212c0.613,0.349,1.239,0.678,1.88,0.98
+    c0.047,0.022,0.095,0.042,0.142,0.064c2.089,0.971,4.319,1.684,6.651,2.105c0.061,0.011,0.122,0.022,0.184,0.033
+    c0.724,0.125,1.456,0.225,2.197,0.292c0.09,0.008,0.18,0.013,0.271,0.021C25.998,54.961,26.744,55,27.5,55
+    c0.749,0,1.488-0.039,2.222-0.098c0.093-0.008,0.186-0.013,0.279-0.021c0.735-0.067,1.461-0.164,2.178-0.287
+    c0.062-0.011,0.125-0.022,0.187-0.034c2.297-0.412,4.495-1.109,6.557-2.055c0.076-0.035,0.153-0.068,0.229-0.104
+    c0.617-0.29,1.22-0.603,1.811-0.936c0.147-0.083,0.293-0.167,0.439-0.253c0.538-0.317,1.067-0.648,1.581-1
+    c0.185-0.126,0.366-0.259,0.549-0.391c0.439-0.316,0.87-0.642,1.289-0.983c0.093-0.075,0.193-0.14,0.284-0.217l0.915-0.764
+    l-0.027-0.023C51.523,42.802,55,35.55,55,27.5z M2,27.5C2,13.439,13.439,2,27.5,2S53,13.439,53,27.5
+    c0,7.577-3.325,14.389-8.589,19.063c-0.294-0.203-0.59-0.385-0.893-0.537l-8.467-4.233c-0.76-0.38-1.232-1.144-1.232-1.993v-2.957
+    c0.196-0.242,0.403-0.516,0.617-0.817c1.096-1.548,1.975-3.27,2.616-5.123c1.267-0.602,2.085-1.864,2.085-3.289v-3.545
+    c0-0.867-0.318-1.708-0.887-2.369v-4.667c0.052-0.52,0.236-3.448-1.883-5.864C34.524,9.065,31.541,8,27.5,8
+    s-7.024,1.065-8.867,3.168c-2.119,2.416-1.935,5.346-1.883,5.864v4.667c-0.568,0.661-0.887,1.502-0.887,2.369v3.545
+    c0,1.101,0.494,2.128,1.34,2.821c0.81,3.173,2.477,5.575,3.093,6.389v2.894c0,0.816-0.445,1.566-1.162,1.958l-7.907,4.313
+    c-0.252,0.137-0.502,0.297-0.752,0.476C5.276,41.792,2,35.022,2,27.5z"></path>
+                </svg></span>
+            <p class="u-align-center u-text u-text-1">
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
+                    href="teAC2.html" data-page-id="529714637">Lin Yijun</a>
+            </p>
+        </div>
+    </header>
+      <div class="u-content-layout u-sheet">
+        <aside class="u-hidden-xl u-indent-100 u-sidebar u-spacing-0 u-block-da40-1">
+          <div class="u-block u-indent-30 u-block-da40-2">
+            <div class="u-block-container u-clearfix">
+              <h5 class="u-block-header u-text u-block-da40-3"></h5>
+              <div class="u-block-content u-text u-block-da40-4"></div>
+            </div>
+          </div>
+          <div class="u-block u-indent-30 u-block-da40-5">
+            <div class="u-block-container u-clearfix">
+              <h5 class="u-block-header u-text u-block-da40-6"></h5>
+              <div class="u-block-content u-text u-block-da40-7"></div>
+            </div>
+          </div>
+          <div class="u-block u-indent-30 u-block-da40-8">
+            <div class="u-block-container u-clearfix">
+              <h5 class="u-block-header u-text u-block-da40-9"></h5>
+              <div class="u-block-content u-text u-block-da40-10"></div>
+            </div>
+          </div>
+            <style data-mode="XL">
+                .u-block-da40-1 {
+                    flex-basis: auto;
+                    width: 141px;
+                }
+
+                .u-block-da40-3 {
+                    font-size: 1.125rem;
+                    line-height: 2;
+                }
+
+                .u-block-da40-4 {
+                    font-size: 0.875rem;
+                    line-height: 2;
+                }
+
+                .u-block-da40-6 {
+                    font-size: 1.125rem;
+                    line-height: 2;
+                }
+
+                .u-block-da40-7 {
+                    font-size: 0.875rem;
+                    line-height: 2;
+                }
+
+                .u-block-da40-9 {
+                    font-size: 1.125rem;
+                    line-height: 2;
+                }
+
+                .u-block-da40-10 {
+                    font-size: 0.875rem;
+                    line-height: 2;
+                }
+            </style>
+            <style data-mode="LG"></style>
+            <style data-mode="MD"></style>
+            <style data-mode="SM"></style>
+            <style data-mode="XS"></style>
+        </aside>
+        <div class="u-content">
+            <h1 class="center">Learning Center<a class="tooltip2">ⓘ
+                    <span class="tooltiptext2">
+                        <p>• Test, Learning materials, Learning Tools related </p>
+                    </span>
+                </a></h1>
+            <br><br>
+
+
+
+
+
+
+
+            <!--VIEW-->
+            <div id="onlineTools" title="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Online Tools">
+            
+                
+                <iframe width="100%" height="1000px" src="sortDragger/index.html" title="W3Schools Free Online Web Tutorials"></iframe>
+
+
+            </div>
+
+
+
+
+
+
+
+            <!--22-->
+
+            <div id="upload22" title="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Test">
+
+                <div class="centerThings">
+                    <iframe width="100%" height="650px" src="dropUpload/index.html"></iframe>
+                
+ 
+
+                  </div>
+
+
+            </div>
+
+                        <!--kkwong-->
+
+                        <div id="kkwong" title="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Test">
+
+                            <div class="centerThings">
+                                <iframe width="100%" height="700px" src="dragFile/index.html"></iframe>
+                            
+             
+            
+                              </div>
+            
+            
+                        </div>
+            <!--testAdder-->
+
+            <div id="testAdder" title="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Test">
+
+                <div class="centerThings">
+
+                    <h3 class="wordHolder">Enter The information Below:</h3>
+                    <br>
+                    <p class="wordHolder">AY:21/22</p><br>
+          
+          
+                    <!--
+          
+                    <div class="styled-input1">
+                      <input type="text" id="classnameinput" required />
+                      <label>Enter Class Name:</label>
+                      <span></span>
+                    </div>
+          
+                    <br>
+          -->
+          
+          
+          
+
+          
+                    <div class="classAddSelectClass">
+                      <label for="classes" class="textareaThings2">Select Class:</label><br>
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+                      <select name="classes" id="classes" class="textareaThings2">
+                        <option selected >1A</option>
+                        <option>1B</option>
+                        <option>1C</option>
+                        <option>1D</option>
+                        <option>2A</option>
+                        <option>2B</option>
+                        <option>2C</option>
+                        <option>2D</option>
+                        <option>3A</option>
+                        <option>3B</option>
+                        <option>3C</option>
+                        <option>3D</option>
+                        <option>4A</option>
+                        <option>4B</option>
+                        <option>4C</option>
+                        <option>4D</option>
+                        <option>5A</option>
+                        <option>5B</option>
+                        <option>5C</option>
+                        <option>5D</option>
+                        <option>6A</option>
+                        <option>6B</option>
+                        <option>6C</option>
+                        <option>6D</option>
+            
+            
+                      </select>
+          
+                    </div>
+          
+                    <div class="styled-input1">
+                        <input class="inputTmp" type="text" id="testcodeinput" required="">
+                        <label>Enter Testcode:</label>
+                        <span style="background-color: red;" id="spanjai"></span>
+                      </div>
+
+
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; 
+
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      Due Date:
+                      <p><input class="styled-input1" type="text" id="datepicker" placeholder="Enter Due Date"></p>
+
+                        <label for="classes" class="textareaThings2">Select subject:</label><br>
+                         
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <select name="classes" id="set2" class="textareaThings2">
+                          <option selected>Chinese </option>
+                          <option>English </option>
+                          <option>Math </option>
+                          <option>Physic </option>
+                          <option>Chemistry </option>
+                          <option>Biology </option>
+                          <option>ICT </option>
+                          <option>PE </option>
+                          <option>Music </option>
+                          <option>Other </option>
+              
+              
+                        </select>
+          
+                        <br><br>
+                      <label for="classes" class="textareaThings2">Select Test set (if available):</label><br>
+           
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                      <select name="classes" id="set" class="textareaThings2">
+                        <option selected>none</option>
+
+                        <option >set 1</option>
+                        <option>set 2 </option>
+                        <option>set 3</option>
+                        <option>set 4</option>
+          
+            
+            
+                      </select>
+                      <p style="text-align: center;"> ➖➖➖
+
+                    </p>
+
+                    <script>
+                        $(document).ready(function(){
+                            var count11= 1;
+
+                            $("#questionsAdd1").click(function(){
+                                $("#testAdder").animate({ scrollTop: $("#testAdder")[0].scrollHeight }, 1000);
+                                $("#questionFill").append("<div><p style='text-align:center'>Question "+(count11)+"</p><div class='styled-input1' id='opop111'><input class='inputTmp' type='text' id='classnameinput' required=''><label>Enter Questions:</label><span style='background-color: red;' id='spanjai'></span><br> <br> </div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Enter Choices                      <a class='tooltip2'>(How to input qustions choices? )ⓘ                        <span class='tooltiptext2'>                            <p>Choices should be separate with comma and start with the correct answer, and there should be 4 choices</p>                            <p>e.g. '22,33,44,88', system will random order the choices</p>                        </span>                    </a>: <br> <br> <div class='textareaThings'><textarea rows='4' cols='50' class='classDesc2' id='textareathings' placeholder='e.g. Apple, Car, Phone, Hong Kong'required></textarea><span></span></div><p style='text-align:center'> <br>➖➖➖</p></div>")
+                                count11=count11+1;
+                            });
+
+                            $("#questionsAdd2").click(function(){
+                                $("#testAdder").animate({ scrollTop: $("#testAdder")[0].scrollHeight }, 1000);
+                                
+                                for(i=0;i<2;i++){
+                                    $('#questionFill').children().last().fadeOut('slow',function(){
+                                        $(this).remove();
+                                    });
+                                }
+                                count11=count11-1;
+
+
+                            });
+                        });
+                    </script>
+                    <div id="questionFill">
+
+                    </div>
+
+
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;
+
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <button id="questionsAdd1">Add questions</button>
+                      <button id="questionsAdd2">Remove questions</button>
+                      <br>
+ 
+
+                  </div>
+
+
+            </div>
+
+
+
+            <!--classAdder-->
+
+            <div id="classAdder"
+                title="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp My Files">
+
+                <div class="centerThings">
+                    <br>
+                    <script>
+
+
+                        
+                    </script>
+                    &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button id="fileUploader">Upload file⬆️</button>   <br>
+                    <label for="classes" class="textareaThings2">Subject:</label><br>
+
+                    <select name="classes" id="classes2" class="textareaThings2">
+                        <option value="all" selected>All</option>
+                        <option value="chinese">Chinese</option>
+                        <option value="eng">English</option>
+                        <option value="math">Math</option>
+                        <option value="phy">Phy</option>
+                        <option value="chem">Chem</option>
+                        <option value="bio">Bio</option>
+                        <option value="ict">ICT</option>
+                        <option value="ba">BA</option>
+
+                    </select>
+
+                    &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <label for="classes" class="textareaThings2">Year:</label><br>
+
+                    <select name="classes" id="classes3" class="textareaThings2">
+                        <option value="all" selected>All</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+
+
+                    </select>
+                    <script>
+
+                        $(document).ready(function(){
+                            $(".delFile").click(function(){
+                                $("#classAdder").animate({backgroundColor:"#2ACAEA"},200).animate({backgroundColor:"#fff"},200);
+                                $(this).parent().remove();
+                            });
+
+                        });
+
+
+                    </script>
+                    <div class="filecontainer">
+                        <div class="filess" id="chineseGood" ><img onClick="window.open('LearningMaterials.pdf');" id="pigpig"
+                                src="LIHKG%20Pig.png"><br>Chinese 12 Poem<button style="float: right;" class="delFile">❌</button></div>
+
+                                <div class="filess" id="chineseGoodyr1" ><img onClick="window.open('LearningMaterials.pdf');" id="pigpig"
+                                    src="LIHKG%20Pig.png"><br>Chinese 12 Poem(Yr1) <button style="float: right;" class="delFile">❌</button></div>
+
+                                    <div class="filess" id="chineseGoodyr2" ><img onClick="window.open('LearningMaterials.pdf');"  id="pigpig"
+                                        src="LIHKG%20Pig.png"><br>Chinese 12 Poem(Yr2) <button style="float: right;" class="delFile">❌</button></div>
+
+                        <div class="filess" ><img  onClick="window.open('LearningMaterials.pdf');" id="pigpig"
+                                src="LIHKG%20Pig.png"><br>Math useful formula <button style="float: right;" class="delFile">❌</button></div>
+
+                        <div class="filess" id="engGood" ><img onClick="window.open('LearningMaterials.pdf');"
+                                id="pigpig" src="LIHKG%20Pig.png"><br>Shakespeare Poem <button style="float: right;" class="delFile">❌</button></div>
+
+                        <div class="filess" id="engGood2" ><img onClick="window.open('LearningMaterials.pdf');"
+                                id="pigpig" src="LIHKG%20Pig.png"><br>Funny English <button style="float: right;" class="delFile">❌</button></div>
+
+                        <div class="filess" ><img id="pigpig" onClick="window.open('LearningMaterials.pdf');"
+                                src="LIHKG%20Pig.png"><br>Chemistry Formula <button style="float: right;" class="delFile">❌</button></div>
+
+                        <div class="filess" ><img id="pigpig" onClick="window.open('LearningMaterials.pdf');"
+                                src="LIHKG%20Pig.png"><br>JAVA skill <button style="float: right;" class="delFile">❌</button></div>
+ 
+                        <div class="filess" ><img id="pigpig" onClick="window.open('LearningMaterials.pdf');"
+                                src="LIHKG%20Pig.png"><br>Anatomy 101 <button style="float: right;" class="delFile">❌</button></div>
+
+                        <div class="filess" ><img id="pigpig" onClick="window.open('LearningMaterials.pdf');"
+                                src="LIHKG%20Pig.png"><br>V=IR v2 <button style="float: right;" class="delFile">❌</button></div>
+
+                        <div class="filess" ><img id="pigpig" onClick="window.open('LearningMaterials.pdf');"
+                                src="LIHKG%20Pig.png"><br>Economic 101 <button style="float: right;" class="delFile">❌</button></div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+                 <!--LRmain-->
+
+                 <div id="lrmain"
+                 title="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Learning Materials">
+ 
+                 <div class="centerThings">
+                     <br>
+                     <script>
+ 
+ 
+                         
+                     </script>
+                     &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button id="myfile">My Files</button>   <br>
+                     <label for="classes" class="textareaThings2">Subject:</label><br>
+ 
+                     <select name="classes" id="classes66" class="textareaThings2">
+                         <option value="all" selected>All</option>
+                         <option value="chinese">Chinese</option>
+                         <option value="eng">English</option>
+                         <option value="math">Math</option>
+                         <option value="phy">Phy</option>
+                         <option value="chem">Chem</option>
+                         <option value="bio">Bio</option>
+                         <option value="ict">ICT</option>
+                         <option value="ba">BA</option>
+ 
+                     </select>
+ 
+                     &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                     <label for="classes" class="textareaThings2">Year:</label><br>
+ 
+                     <select name="classes" id="classes77" class="textareaThings2">
+                         <option value="all" selected>All</option>
+                         <option value="1">1</option>
+                         <option value="2">2</option>
+                         <option value="3">3</option>
+                         <option value="4">4</option>
+                         <option value="5">5</option>
+                         <option value="6">6</option>
+ 
+ 
+                     </select>
+                     <br><br>
+                     <p style="text-align: center;">Your Classes:</p>
+                     <table class="tablesort" id="resultTable0" style="width: 80%;margin-top:1%">
+                        <thead>
+    
+                            <tr class="header">
+                                <th>Class</th>
+                                <th>Subject</th>
+                                <th>Action</th>
+    
+    
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                            <tr class="jj123table" id="mathclass">
+                                <td>1B</td>
+                                <td>Math</td>
+
+                                <td><button class="viewclassfile">VIEW</td>
+                            </tr>
+                            <tr class="jj123table" id="chineseclass">
+                                <td>2C</td>
+                                <td>Chinese</td>
+
+                                <td><button class="viewclassfile">VIEW</td>
+                                </tr>
+                        </tbody>
+    
+                    </table>
+                     <script>
+ 
+ 
+ 
+ 
+                     </script>
+
+ 
+ 
+                 </div>
+             </div>
+            <!--VIEW-->
+            <div id="ViewDia" title="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Test">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+                <div id="chartjai" style="margin-left: 26%;">
+
+                    <canvas id="myChart2" style="width:80%;max-width:750px"></canvas>
+
+                    
+                </div>
+                <br>
+                <p style="text-align: center;" id="demo"></p>
+                <p style="text-align: center;">Name List of student who not yet finish:                 <button id="informthem">Notice them via school mail</button> </p>
+                <table class="tablesort" id="resultTable0" style="width: 80%;margin-top:1%">
+                    <thead>
+
+                        <tr class="header">
+                            <th>Class number</th>
+                            <th>Name</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>11</td>
+
+                            <td>Tai Man</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+
+                            <td>Wong Man Tai </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Dec 22, 2021 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = "Time remaining: "+days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+                <script>
+                    var xValues = [ "Not Finished","Finished"];
+                    var yValues = [2, 28];
+                    var barColors = [
+                      "#b91d47",
+                      "#00aba9"
+                    ];
+                    
+                    new Chart("myChart2", {
+                      type: "doughnut",
+                      data: {
+                        labels: xValues,
+                        datasets: [{
+                          backgroundColor: barColors,
+                          data: yValues
+                        }]
+                      },
+                      options: {
+                        title: {
+                          display: true,
+                          text: "Attempt Rate"
+                        }
+                      }
+                    });
+                    </script>
+
+
+
+            </div>
+
+            <!--MANAGE-->
+
+            <script>
+                function moveRight(leftValue, rightValue) {
+                    //alert("Elft value is t : "+leftValue);
+                    var leftSelect = document.forms["form1"].elements[leftValue];
+                    var rightSelect = document.forms["form1"].elements[rightValue];
+                    //alert("test : " + document.forms["form1"].elements[myLeftId].options[selItem].value);
+                    if (leftSelect.selectedIndex == -1) {
+                        window.alert("You must first select an item on the left side.")
+                    } else {
+                        var option = leftSelect.options[leftSelect.selectedIndex];
+                        rightSelect.appendChild(option);
+                    }
+                }
+            </script>
+            <div id="ManDia"
+                title="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Test Result">
+                <h1 class="wordHolder2" style="background-color: gainsboro;">Math Test Result (Code: 123)</h1>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                <div style="margin-left:35%;">
+                    <canvas id="myChart4" style="width:100%;max-width:500px;"></canvas>
+
+
+                </div>
+<div style="margin-left:25%;">
+    <script>
+        var xValues = [ "Not Finished","Finished"];
+        var yValues = [2, 28];
+        var barColors = [
+          "#b91d47",
+          "#00aba9"
+        ];
+        
+        new Chart("myChart4", {
+          type: "doughnut",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: "Attempt Rate"
+            }
+          }
+        });
+        </script>
+
+    <canvas id="myChart3" style="width:100%;max-width:800px"></canvas>
+
+</div>
+<script>
+var xValues = ["Q1","Q2","Q3","Q4","Q5","Q6","Q7","Q8","Q9","10"];
+
+new Chart("myChart3", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{ 
+      data: [11,25,11,15,15,20,25,20,8,5],
+      borderColor: "blue",
+      fill: false
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Answer correct rate"
+    }
+  }
+});
+</script>
+<h6 style="text-align: center;">(x axis: Questions, y axis: correct count)</h6>
+                <h3 class="wordHolder2"> Average Marks: 6/10 </h3>
+                <h3 class="wordHolder2"> Average Time used: 45s </h3>
+                <br>
+                <h3 class="wordHolder2"> Test details:</h3>
+                <table class="tablesort" id="resultTable" style="width: 80%;margin-top:1%">
+                    <thead>
+
+                        <tr class="header">
+                            <th>Question Number</th>
+                            <th>Question</th>
+                            <th>Answer</th>
+                            <th>Most Choosed Answer</th>
+                            <th>Accuracy</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>Q1</td>
+
+                            <td>What is answer of 69 * 69?</td>
+
+                            <td>4761</td>
+
+                            <td>3842</td>
+                            <td>32%</td>
+                        </tr>
+                        <tr>
+                            <td>Q2</td>
+
+                            <td>What is x of x − 2 = 4 ?</td>
+
+                            <td>6</td>
+
+                            <td>6</td>
+                            <td>90%</td>
+                        </tr>
+                        <tr>
+                            <td>Q3</td>
+
+                            <td>Which formula can calculate the area of a Circle?</td>
+
+                            <td>PI*r^2</td>
+
+                            <td>y=mx+c</td>
+                            <td>50%</td>
+                        </tr>
+
+                        <tr>
+                            <td>Q4</td>
+
+                            <td>Given A+B=12, B-A=6, B+C=11, what is C?</td>
+
+                            <td>2</td>
+
+                            <td>2</td>
+                            <td>80%</td>
+                        </tr>
+                        <tr>
+                            <td>Q5</td>
+
+                            <td>What is answer of 6*6?</td>
+
+                            <td>36</td>
+
+                            <td>36</td>
+                            <td>75%</td>
+                        </tr>
+
+                        <tr>
+                            <td>Q6</td>
+
+                            <td>What is answer of 4+2?</td>
+
+                            <td>6</td>
+
+                            <td>2</td>
+                            <td>30%</td>
+                        </tr>
+                        <tr>
+                            <td>Q7</td>
+
+                            <td>Where we use sin cos tan?</td>
+
+                            <td>Triangle</td>
+
+                            <td>Triangle</td>
+                            <td>88%</td>
+                        </tr>
+                        <tr>
+                            <td>Q8</td>
+
+                            <td>What number is sin 30?</td>
+
+                            <td>1/2</td>
+
+                            <td>1/2</td>
+                            <td>60%</td>
+                        </tr>
+                        <tr>
+                            <td>Q9</td>
+
+                            <td>What number is sin 60?</td>
+
+                            <td>1/2</td>
+
+                            <td>2</td>
+                            <td>22%</td>
+                        </tr>
+                        <tr>
+                            <td>Q10</td>
+
+                            <td>What is answer of (6*6)/6</td>
+
+                            <td>6</td>
+
+                            <td>6</td>
+                            <td>70%</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+                <br><br>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+                <h1 class="wordHolder2" style="background-color: gainsboro;">Result Analysis</h1>
+                <div style="display: flex; align-items: center; justify-content: center;" id="containCanvas">
+                    <canvas id="myChart" style="width:100%;max-width:1000px;"></canvas>
+
+
+
+
+
+                </div>
+                <h6 style="text-align: center;">(x axis: Topic, y axis: accuracy)</h6>
+                <br><br><br>
+                <div style="display: flex; align-items: center; justify-content: center;" id="containCanvas">
+                    <br>
+
+                    <a id="downReport" onClick="window.open('file.doc');">Download Result Report</a><br> <br>
+                    <a class="tooltip2">ⓘ
+                        <span class="tooltiptext2">
+                            <p>• Result Analysis, you can see student performance in different topics. </p>
+                        </span>
+                    </a>
+
+                </div><br>
+                <div style="display: flex; align-items: center; justify-content: center;" id="containCanvas">
+                    <br>
+
+                    <a id="downReport2" onClick="window.open('file.csv');">Download Student Result</a>
+                    <a class="tooltip2">ⓘ
+                        <span class="tooltiptext2">
+                            <p>• You can see each student's answer in this document </p>
+                        </span>
+                    </a>
+
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: center;" id="containCanvas">
+                    <br>
+
+                </div>
+
+
+                <script>
+                    var xValues = ["Quadratic equation", "Algebra", "Area and Volume", "Simultaneous Equations", "Trigonometry"];
+                    var yValues = [100, 75, 50, 25, 20];
+                    var barColors = ["red", "green", "blue", "orange", "brown"];
+
+                    new Chart("myChart", {
+                        type: "bar",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                            }]
+                        },
+                        options: {
+                            legend: { display: false },
+                            title: {
+                                display: true,
+                                text: "Questions Accuracy"
+                            }
+                        }
+                    });
+                </script>
+
+
+            </div>
+
+
+
+            <!--EDIT-->
+            <div id="EditDia" title=" &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Test">
+                <h1 id="btn" class="wordHolder2" style="background-color: gainsboro;">Test ➖</h1>
+                <div id="div1" style="width:100%px;height:450px;
+                border:solid 1px #000080;background-color:#AFA;
+                font-family:'MS Serif', 'New York', serif; font-size:xx-large; 
+                color:#2A0000">
+
+                <br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button id="addTest">Add Test</button>
+                    <table class="tablesort" id="testTable" style="width: 80%;margin-top:1%">
+                        <thead>
+
+                            <tr class="header">
+                                <th>Test code</th>
+                                <th>Class</th>
+                                <th>Subject 📖</th>
+                                <th>Duedate 🕒</th>
+
+                                <th><a class="tooltip">ⓘ
+                                        <span class="tooltiptext">
+                                            <p>View: View Class detail and Student list,</p>
+                                            <p>Manage: Add/Drop students to class </p>
+                                            <p>Edit: Edit Class information</p>
+                                        </span>
+                                    </a>Action 🔧</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>100</td>
+                                <td>1B</td>
+
+                                <td>Chinese</td>
+                                <td>10/12/2021</td>
+
+                                <td><button class="statusBarAct">View</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>108</td>
+                                <td>2C</td>
+                                <td>Math</td>
+                                <td>21/12/2021</td>
+                                <td><button class="statusBarAct">View</button></td>
+                            </tr>
+<!--
+
+                            <tr>
+                                <td>138</td>
+                                <td>3D</td>
+                                <td>English</td>
+                                <td>22/12/2021</td>
+                                <td><button class="statusBarAct">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>177</td>
+                                <td>4E</td>
+                                <td>Chem</td>
+                                <td>23/12/2021</td>
+                                <td><button class="statusBarAct">View</button></td>
+                            </tr>
+
+-->
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+                <h1 id="btn2" class="wordHolder2" style="background-color: gainsboro;">Finished Test ➕</h1>
+
+                <div id="div2" style="display:none;width:100%px;height:300px;
+                border:solid 1px #000080;background-color:#AFA;
+                font-family:'MS Serif', 'New York', serif; font-size:xx-large; 
+                color:#2A0000">
+
+                    <table class="tablesort" id="testTable2" style="width: 80%;margin-top:1%">
+                        <thead>
+
+                            <tr class="header">
+                                <th>Test code</th>
+                                <th>Class</th>
+                                <th>Subject 📖</th>
+                                <th>Finish Date 🕒</th>
+
+                                <th><a class="tooltip">ⓘ
+                                        <span class="tooltiptext">
+                                            <p>View: View Class detail and Student list,</p>
+                                            <p>Manage: Add/Drop students to class </p>
+                                            <p>Edit: Edit Class information</p>
+                                        </span>
+                                    </a>Action 🔧</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                                <td>42</td>
+                                <td>1C</td>
+                                <td>Math</td>
+                                <td>11/9/2021</td>
+                                <td><button class="statusBarCan">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>33</td>
+                                <td>2B</td>
+                                <td>Chinese</td>
+
+                                <td>12/10/2021</td>
+                                <td><button class="statusBarCan">View</button></td>
+                            </tr>
+
+
+
+                        </tbody>
+
+                    </table>
+
+
+
+                </div>
+
+
+            </div>
+
+            <div id="informer" title="Action Successful">
+                <p>Message send!</p>
+                <p>The dialog box will close in 3 seconds automatically...</p>
+            </div>
+
+            <!--success message-->
+            <div id="successDia" title="Upload Successful">
+                <p>Upload successful!</p>
+                <p>The dialog box will close in 3 seconds automatically...</p>
+            </div>
+
+            <!--save message-->
+            <div id="savesuccessDia" title="Edit Successful">
+                <p>Edit successful!</p>
+                <p>The dialog box will close in 3 seconds automatically...</p>
+            </div>
+
+            <!--change message-->
+            <div id="changeDia" title="Change Successful">
+                <p>Change successful!</p>
+                <p>The dialog box will close in 3 seconds automatically...</p>
+            </div>
+
+            <h2 class="center" id="YOURCLASS"><button class="mainButton" id="func1"
+                    onmouseover="this.style.color='orange';this.style.fontSize='60px'"
+                    onmouseout="this.style.color='white';this.style.fontSize='40px'"
+                    style="font-size:40px;width:100%;height:100px;color:aliceblue;background-color: rgb(228, 123, 123) ">Test
+                    📝 </button>
+            </h2>
+            <br><br>
+            <h2 class="center" id="YOURCLASS"><button class="mainButton" id="func2"
+                    onmouseover="this.style.color='orange';this.style.fontSize='60px'"
+                    onmouseout="this.style.color='white';this.style.fontSize='40px'"
+                    style="font-size:40px;width:100%;height:100px;color:aliceblue;background-color: rgb(218, 221, 54) ">Learning
+                    materials 📚 </button>
+            </h2>
+            <br><br>
+            <h2 class="center" id="YOURCLASS"><button class="mainButton" id="func3"
+                    onmouseover="this.style.color='orange';this.style.fontSize='60px'"
+                    onmouseout="this.style.color='white';this.style.fontSize='40px'"
+                    style="font-size:40px;width:100%;height:100px;color:aliceblue;background-color: rgb(124, 163, 207) ">Learning
+                    Tools 🧮 </button>
+            </h2>
+
+
+            <br><br>
+
+
+            <p></p>
+            <br>
+            </p>
+            </section>
+        </div>
+    </div>
+    <br><br>
+
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2cf8">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <p class="u-small-text u-text u-text-variant u-text-1"> Copyright (c) the Man Secondary School 2021. All
+                rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+
+
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#btn").click(function () {
+            $("#div1").toggle(500);
+            if (this.innerText == 'Test ➕') {
+                $(this).text("Test ➖");
+
+            } else {
+                $(this).text("Test ➕");
+            }
+
+
+        });
+    });
+
+    $(function () {
+        $("#btn2").click(function () {
+            $("#div2").toggle(500);
+            if (this.innerText == 'Finished Test ➕') {
+                $(this).text("Finished Test ➖");
+
+            } else {
+                $(this).text("Finished Test ➕");
+            }
+
+        });
+    });
+</script>

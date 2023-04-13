@@ -1,0 +1,40 @@
+/* Code Editor 1.0 */
+var CE={
+	open: function(e){
+		var code=$(e).next().val();
+		localStorage.setItem("r_cp_content",code);
+		window.open("https://javacodepoint.com/code-editor/","_blank");
+	}
+}
+/* Download attachment timer code */
+setTimeout(function(){
+	if(document.getElementById("download-attachment")){
+		document.getElementById("download-attachment").addEventListener("click", function(){
+			var btnEle=this;
+			var allow=btnEle.getAttribute("allow");
+			var allow= allow==null || allow=='true' ? true : false;
+			if(allow){
+				btnEle.setAttribute("allow",false);	
+				var download_url = "https://www.javacodepoint.com/wp-content/downloads" + btnEle.getAttribute("data-url");	
+				var inner_html=btnEle.innerHTML;				
+				var counter = 15;
+				btnEle.classList.remove("btn-warning");
+				btnEle.classList.add("btn-success");
+				btnEle.innerHTML = "Automatically file will be downloaded in " + counter + " seconds.";
+				var _timerId = setInterval(function() {
+					counter--;
+					if(counter < 0) {
+						window.location = download_url;
+						btnEle.classList.add("btn-warning");
+						btnEle.classList.remove("btn-success");
+						btnEle.innerHTML = inner_html
+						btnEle.setAttribute("allow",true);	
+						clearInterval(_timerId);
+					} else {
+						btnEle.innerHTML = "Automatically file will be downloaded in " + counter + " seconds.";
+					}
+				}, 1000);
+			}
+		});
+	}
+},2000);

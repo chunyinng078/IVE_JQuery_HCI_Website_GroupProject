@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Attendance Online</title>
+	<script src="jslib/jquery-3.6.0.js"></script>
+	<script src="jslib/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="jslib/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script>
+		function myFunction(){
+			if($("#username").val()=="200090262"&& $("#password").val()=="password"){
+				$("#form").attr("action","../Student/index.html");
+			}
+			else if($("#username").val()=="tct02"&& $("#password").val()=="password"){
+				$("#form").attr("action","../teacher/index.html");
+			}
+			else if($("#username").val()=="admin"&& $("#password").val()=="password"){
+				$("#form").attr("action","../admin/adHome.html");
+			}
+			else if($("#username").val()=="200090111"&& $("#password").val()=="password"){
+				$("#form").attr("action","../Student/index2.html");
+			}
+			
+			
+			else{
+				alert("Please check your input!");
+			}
+		}
+		$(function () {
+			$("#dialog").dialog({
+				draggable: false,
+				autoOpen: false,
+				width: 750,
+				height: 250,
+				show: {
+					effect: "blind",
+					duration: 1000
+				},
+				hide: {
+					effect: "explode",
+					duration: 1000
+				},
+				'title': 'Forgot Password',
+				'buttons': {
+					'OK': function (event) {
+						$(this).closest('.ui-dialog-content').dialog('close');
+					}
+				}
+			});
+			$("#opener").click(function () {
+				$("#dialog").dialog("open");
+				$(this).focus();
+			});
+
+
+		});
+	</script>
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+	<!-- The video -->
+	<video autoplay muted loop id="myVideo">
+		<source src="video/rain.mp4" type="video/mp4">
+	</video>
+</head>
+
+<body>
+	<img class="wave" src="img/white.png">
+	<div class="container">
+		<div class="img">
+			<img src="img/ive.png"><!-- school photo-->
+		</div>
+		<div class="login-content">
+			<form onsubmit="myFunction()" action="" id="form">
+				<h2 class="title">Attendance Online</h2>
+				<div class="input-div one">
+					<div class="i">
+						<i class="fas fa-user"></i>
+					</div>
+					<div class="div">
+						<h5>Username</h5>
+						<input id="username"type="text" class="input" required>
+					</div>
+				</div>
+				<div class="input-div pass">
+					<div class="i">
+						<i class="fas fa-lock"></i>
+					</div>
+					<div class="div">
+						<h5>Password</h5>
+						<input id="password" type="password" class="input" required>
+					</div>
+				</div>
+				<a href="#" id="opener">Forgot Password?</a>
+
+
+
+				<div id="dialog" title="Forgot Password">
+					<p>Please come to the IT department directly or send an email to us!
+						<br><br><br>
+						<a style="color:blue" href="mailto:supportIT@mss.com">-IT department<br>supportIT@mss.com</a>
+					</p>
+				</div>
+
+
+
+				
+				<input type="submit" class="btn" value="Login">
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="jslib/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://127.0.0.1:5500/test.html -->
+<html lang="en">
+
+    <style>
+        .yearcal .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+          }
+          
+          .yearcal .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+            top: -5px;
+            right: 105%;
+          }
+          
+          .yearcal .tooltip:hover .tooltiptext {
+            visibility: visible;
+          }
+
+        .yearcal {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            font-family: Helvetica, Arial, sans-serif;
+            background-color: #f7f7f9;
+            color: #777;
+            font-size: 12pt;
+        }
+
+        .yearcal a:link,
+        .yearcal a:active,
+        .yearcal a:visited {
+            color: #777;
+            text-decoration: none;
+        }
+
+        .yearcal .dt,
+        .yearcal .day,
+        .yearcal .mo {
+            text-align: center;
+            width: 60px;
+            height: 25px;
+        }
+
+        .yearcal .day,
+        .yearcal .mo {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .yearcal .day,
+        .yearcal .dt {
+            margin-bottom: 5px;
+        }
+
+        .yearcal .mo {
+            margin-bottom: 20px;
+        }
+
+        .yearcal table,
+        .yearcal td {
+            border-spacing: 0;
+            vertical-align: top;
+        }
+
+        .yearcal h1 {
+            display: inline-block;
+            font-size: 4.5em;
+            margin: 30px 0 0 40px;
+        }
+
+        .yearcal h2 {
+            margin: 0 0 30px 40px;
+        }
+
+        .yearcal #cal {
+            margin: 0 auto;
+            width: 780px;
+        }
+
+        .yearcal #time {
+            float: right;
+        }
+
+        .yearcal body.night {
+            background-color: #111;
+            color: #EEE;
+        }
+
+        .yearcal body.night h1 {
+            color: #EEE;
+        }
+
+        .yearcal body.night .day,
+        .yearcal body.night .mo {
+            color: #aaa;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="yearcal" class="yearcal"  style="background-color: rgb(177, 220, 255);">
+        <div id="cal">
+            <header>
+                <h1 id="caltitle">2021</h1><br>
+                <h3 id="time"><a class="tooltip" style="color: blue;">Help
+  <span class="tooltiptext">
+      <p>Green: 90% Attended</p> 
+      <p>Red: >20% Absent & Sick leave </p> 
+      <p>Yellow: >10% Late  </p> 
+      <p>Purple >10% Sick leave  </p> 
+    </span>
+</a></h3>
+
+            </header>
+
+            <table>
+                <tbody><tr>
+                    <td>
+                        <div class="day mo"></div>
+                        <div class="day">Su</div>
+                        <div class="day">Mo</div>
+                        <div class="day">Tu</div>
+                        <div class="day">We</div>
+                        <div class="day">Th</div>
+                        <div class="day">Fr</div>
+                        <div class="day">Sa</div>
+                        <div class="day">Su</div>
+                        <div class="day">Mo</div>
+                        <div class="day">Tu</div>
+                        <div class="day">We</div>
+                        <div class="day">Th</div>
+                        <div class="day">Fr</div>
+                        <div class="day">Sa</div>
+                        <div class="day">Su</div>
+                        <div class="day">Mo</div>
+                        <div class="day">Tu</div>
+                        <div class="day">We</div>
+                        <div class="day">Th</div>
+                        <div class="day">Fr</div>
+                        <div class="day">Sa</div>
+                        <div class="day">Su</div>
+                        <div class="day">Mo</div>
+                        <div class="day">Tu</div>
+                        <div class="day">We</div>
+                        <div class="day">Th</div>
+                        <div class="day">Fr</div>
+                        <div class="day">Sa</div>
+                        <div class="day">Su</div>
+                        <div class="day">Mo</div>
+                        <div class="day">Tu</div>
+                        <div class="day">We</div>
+                        <div class="day">Th</div>
+                        <div class="day">Fr</div>
+                        <div class="day">Sa</div>
+                        <div class="day">Su</div>
+                        <div class="day">Mo</div>
+                    </td>
+                    <td>
+                        <table id="months">
+                            <tbody><tr id="mtoprow">
+                                <td class="mc" valign="top"><span id="p0">
+                <div class="months">
+                    <div class="mo">Jan</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >1</div>
+                    <div class="dt"  style="border-radius: 50%;" >2</div>
+                    <div class="dt"  style="border-radius: 50%;" >3</div>
+                    <div class="dt"  style="background-color: rgb(250, 151, 151);border-radius: 50%;" >4</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >5</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >6</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >7</div>
+                    <div class="dt"  style="background-color: rgb(250, 151, 151);border-radius: 50%;" >8</div>
+                    <div class="dt"  style="border-radius: 50%;" >9</div>
+                    <div class="dt"  style="border-radius: 50%;" >10</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >11</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >12</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >13</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >14</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >15</div>
+                    <div class="dt"  style="border-radius: 50%;" >16</div>
+                    <div class="dt"  style="border-radius: 50%;" >17</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >18</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >19</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >20</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >21</div>
+                    <div class="dt"  style="background-color: rgb(252, 152, 255);border-radius: 50%;" >22</div>
+                    <div class="dt"  style="border-radius: 50%;" >23</div>
+                    <div class="dt"  style="border-radius: 50%;" >24</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >25</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >26</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >27</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >28</div>
+                    <div class="dt"  style="background-color: greenyellow;border-radius: 50%;" >29</div>
+                    <div class="dt"  style="border-radius: 50%;" >30</div>
+                    <div class="dt"  style="border-radius: 50%;" >31</div>
+                    <div class="dt"  style="border-radius: 50%;" ></div>
+                </div>
+            </span></td>
+                                <td class="mc" valign="top"><span id="p1">
+                <div class="months">
+                    <div class="mo">Feb</div>
+                    <div class="dt"></div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">1</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">2</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">3</div>
+                    <div class="dt"style="background-color: rgb(238, 238, 0);border-radius: 50%;">4</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">5</div>
+                    <div class="dt"style="border-radius: 50%;">6</div>
+                    <div class="dt"style="border-radius: 50%;">7</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">8</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">9</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">10</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">11</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">12</div>
+                    <div class="dt"style="border-radius: 50%;">13</div>
+                    <div class="dt"style="border-radius: 50%;">14</div>
+                    <div class="dt"style="background-color: rgb(238, 238, 0);border-radius: 50%;">15</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">16</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">17</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">18</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">19</div>
+                    <div class="dt"style="border-radius: 50%;">20</div>
+                    <div class="dt"style="border-radius: 50%;">21</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">22</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">23</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">24</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">25</div>
+                    <div class="dt"style="background-color: greenyellow;border-radius: 50%;">26</div>
+                    <div class="dt"style="border-radius: 50%;">27</div>
+                    <div class="dt"style="border-radius: 50%;">28</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                </div>
+            </span></td>
+                                <td class="mc" valign="top"><span id="p2">
+                <div class="months">
+                    <div class="mo">Mar</div>
+                    <div class="dt"></div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">1</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">2</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">3</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">4</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">5</div>
+                    <div class="dt" style="border-radius: 50%;">6</div>
+                    <div class="dt" style="border-radius: 50%;">7</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;">8</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;">9</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;">10</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">11</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">12</div>
+                    <div class="dt" style="border-radius: 50%;">13</div>
+                    <div class="dt" style="border-radius: 50%;">14</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">15</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">16</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">17</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">18</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">19</div>
+                    <div class="dt" style="border-radius: 50%;">20</div>
+                    <div class="dt" style="border-radius: 50%;">21</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">22</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">23</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">24</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">25</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">26</div>
+                    <div class="dt" style="border-radius: 50%;">27</div>
+                    <div class="dt" style="border-radius: 50%;">28</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">29</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;">30</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">31</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                </div>
+            </span></td>
+                                <td class="mc" valign="top"><span id="p3">
+                <div class="months">
+                    <div class="mo">Apr</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">1</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">2</div>
+                    <div class="dt" style="border-radius: 50%;">3</div>
+                    <div class="dt" style="border-radius: 50%;">4</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">5</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">6</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">7</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">8</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">9</div>
+                    <div class="dt" style="border-radius: 50%;">10</div>
+                    <div class="dt" style="border-radius: 50%;">11</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">12</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;">13</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;">14</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">15</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">16</div>
+                    <div class="dt" style="border-radius: 50%;">17</div>
+                    <div class="dt" style="border-radius: 50%;">18</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">19</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">20</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">21</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">22</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">23</div>
+                    <div class="dt" style="border-radius: 50%;">24</div>
+                    <div class="dt" style="border-radius: 50%;">25</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">26</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">27</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">28</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">29</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">30</div>
+                    <div class="dt" ></div>
+                    <div class="dt" ></div>
+                    <div class="dt" ></div>
+                </div>  
+            </span></td>
+                                <td class="mc" valign="top"><span id="p4">
+                <div class="months">
+                    <div class="mo">May</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt" style="border-radius: 50%;">1</div>
+                    <div class="dt" style="border-radius: 50%;">2</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">3</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">4</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">5</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">6</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">7</div>
+                    <div class="dt" style="border-radius: 50%;">8</div>
+                    <div class="dt" style="border-radius: 50%;">9</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">10</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">11</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">12</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">13</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">14</div>
+                    <div class="dt" style="border-radius: 50%;">15</div>
+                    <div class="dt" style="border-radius: 50%;">16</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">17</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;">18</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;">19</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">20</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">21</div>
+                    <div class="dt" style="border-radius: 50%;">22</div>
+                    <div class="dt" style="border-radius: 50%;">23</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">24</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">25</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">26</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">27</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">28</div>
+                    <div class="dt" style="border-radius: 50%;">29</div>
+                    <div class="dt" style="border-radius: 50%;">30</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">31</div>
+                </div>
+            </span></td>
+                                <td class="mc" valign="top"><span id="p5">
+                <div class="months">
+                    <div class="mo">Jun</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >1</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >2</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >3</div>
+                    <div class="dt" style="background-color: rgb(250, 151, 151);border-radius: 50%;" >4</div>
+                    <div class="dt" style="border-radius: 50%;" >5</div>
+                    <div class="dt" style="border-radius: 50%;" >6</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >7</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >8</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >9</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;" >10</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;" >11</div>
+                    <div class="dt" style="border-radius: 50%;" >12</div>
+                    <div class="dt" style="border-radius: 50%;" >13</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >14</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >15</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >16</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;" >17</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >18</div>
+                    <div class="dt" style="border-radius: 50%;" >19</div>
+                    <div class="dt" style="border-radius: 50%;" >20</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >21</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >22</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >23</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >24</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >25</div>
+                    <div class="dt" style="border-radius: 50%;" >26</div>
+                    <div class="dt" style="border-radius: 50%;" >27</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >28</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;" >29</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >30</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                </div>
+            </span></td>
+                                <td class="mc" valign="top"><span id="p6">
+                <div class="months">
+                    <div class="mo">Jul</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >1</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >2</div>
+                    <div class="dt" style="border-radius: 50%;" >3</div>
+                    <div class="dt" style="border-radius: 50%;" >4</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;" >5</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >6</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >7</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >8</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >9</div>
+                    <div class="dt" style="border-radius: 50%;" >10</div>
+                    <div class="dt" style="border-radius: 50%;" >11</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >12</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >13</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >14</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >15</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >16</div>
+                    <div class="dt" style="border-radius: 50%;" >17</div>
+                    <div class="dt" style="border-radius: 50%;" >18</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >19</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >20</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;" >21</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >22</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >23</div>
+                    <div class="dt" style="border-radius: 50%;" >24</div>
+                    <div class="dt" style="border-radius: 50%;" >25</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >26</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >27</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >28</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >29</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >30</div>
+                    <div class="dt" style="border-radius: 50%;" >31</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                </div>
+            </span></td>
+                                <td class="mc" valign="top"><span id="p7">
+                <div class="months">
+                    <div class="mo">Aug</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >1</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >2</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >3</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;" >4</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >5</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >6</div>
+                    <div class="dt" style="border-radius: 50%;" >7</div>
+                    <div class="dt" style="border-radius: 50%;" >8</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >9</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >10</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >11</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >12</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >13</div>
+                    <div class="dt" style="border-radius: 50%;" >14</div>
+                    <div class="dt" style="border-radius: 50%;" >15</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >16</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;" >17</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >18</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >19</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >20</div>
+                    <div class="dt" style="border-radius: 50%;" >21</div>
+                    <div class="dt" style="border-radius: 50%;" >22</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >23</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >24</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >25</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >26</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >27</div>
+                    <div class="dt" style="border-radius: 50%;" >28</div>
+                    <div class="dt" style="border-radius: 50%;" >29</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;" >30</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >31</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                </div>
+            </span></td>
+                                <td class="mc" valign="top"><span id="p8">
+                <div class="months">
+                    <div class="mo">Sep</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >1</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >2</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >3</div>
+                    <div class="dt" style="border-radius: 50%;" >4</div>
+                    <div class="dt" style="border-radius: 50%;" >5</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >6</div>
+                    <div class="dt" style="background-color: rgb(250, 151, 151);border-radius: 50%;" >7</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >8</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >9</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >10</div>
+                    <div class="dt" style="border-radius: 50%;" >11</div>
+                    <div class="dt" style="border-radius: 50%;" >12</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >13</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >14</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >15</div>
+                    <div class="dt" style="background-color: rgb(250, 151, 151);border-radius: 50%;" >16</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >17</div>
+                    <div class="dt" style="border-radius: 50%;" >18</div>
+                    <div class="dt" style="border-radius: 50%;" >19</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >20</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >21</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >22</div>
+                    <div class="dt" style="background-color: rgb(250, 151, 151);border-radius: 50%;" >23</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >24</div>
+                    <div class="dt" style="border-radius: 50%;" >25</div>
+                    <div class="dt" style="border-radius: 50%;" >26</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >27</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >28</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >29</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >30</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                </div>
+            </span></td>
+                                <td class="mc" valign="top"><span id="p9">
+                <div class="months">
+                    <div class="mo">Oct</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;" >1</div>
+                    <div class="dt" style="border-radius: 50%;" >2</div>
+                    <div class="dt" style="border-radius: 50%;" >3</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >4</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >5</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >6</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >7</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >8</div>
+                    <div class="dt" style="border-radius: 50%;" >9</div>
+                    <div class="dt" style="border-radius: 50%;" >10</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >11</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >12</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >13</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >14</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >15</div>
+                    <div class="dt" style="border-radius: 50%;" >16</div>
+                    <div class="dt" style="border-radius: 50%;" >17</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >18</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >19</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >20</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >21</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >22</div>
+                    <div class="dt" style="border-radius: 50%;" >23</div>
+                    <div class="dt" style="border-radius: 50%;" >24</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >25</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;" >26</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >27</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >28</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >29</div>
+                    <div class="dt" style="border-radius: 50%;" >30</div>
+                    <div class="dt" style="border-radius: 50%;" >31</div>
+                    <div class="dt"></div>
+                </div>
+            </span></td>
+                                <td class="mc" valign="top"><span id="p10">
+                <div class="months">
+                    <div class="mo">Nov</div>
+                    <div class="dt"></div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">1</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">2</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">3</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">4</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">5</div>
+                    <div class="dt" style="border-radius: 50%;">6</div>
+                    <div class="dt" style="border-radius: 50%;">7</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">8</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">9</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">10</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">11</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;">12</div>
+                    <div class="dt" style="border-radius: 50%;">13</div>
+                    <div class="dt" style="border-radius: 50%;">14</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">15</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">16</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">17</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">18</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;">19</div>
+                    <div class="dt" style="border-radius: 50%;">20</div>
+                    <div class="dt" style="border-radius: 50%;">21</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">22</div>
+                    <div class="dt" style="background-color: rgb(250, 151, 151);border-radius: 50%;">23</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">24</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">25</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">26</div>
+                    <div class="dt" style="border-radius: 50%;">27</div>
+                    <div class="dt" style="border-radius: 50%;">28</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">29</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;">30</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                </div>
+            </span></td>
+                                <td class="mc" valign="top"><span id="p11">
+                <div class="months">
+                    <div class="mo">Dec</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >1</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >2</div>
+                    <div class="dt" style="background-color: rgb(250, 151, 151);border-radius: 50%;" >3</div>
+                    <div class="dt" style="border-radius: 50%;" >4</div>
+                    <div class="dt" style="border-radius: 50%;" >5</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >6</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;" >7</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >8</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >9</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >10</div>
+                    <div class="dt" style="border-radius: 50%;" >11</div>
+                    <div class="dt" style="border-radius: 50%;" >12</div>
+                    <div class="dt" style="background-color: rgb(250, 151, 151);border-radius: 50%;" >13</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >14</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >15</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >16</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >17</div>
+                    <div class="dt" style="border-radius: 50%;" >18</div>
+                    <div class="dt" style="border-radius: 50%;" >19</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >20</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >21</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >22</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >23</div>
+                    <div class="dt" style="background-color: rgb(252, 152, 255);border-radius: 50%;" >24</div>
+                    <div class="dt" style="border-radius: 50%;" >25</div>
+                    <div class="dt" style="border-radius: 50%;" >26</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;" >27</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >28</div>
+                    <div class="dt" style="background-color: rgb(238, 238, 0);border-radius: 50%;" >29</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >30</div>
+                    <div class="dt" style="background-color: greenyellow;border-radius: 50%;" >31</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                </div>
+            </span></td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+
+        <div id="tmp">
+            <span id="m0" style="display:none">
+                <div class="months">
+                    <div class="mo">Month</div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                    <div class="dt"></div>
+                </div>
+            </span>
+        </div>
+    </div>
+<!-- Code injected by live-server -->
+</html>

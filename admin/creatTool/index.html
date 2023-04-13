@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Draggable Todo App</title>
+  </head>
+  <body>
+    <!-- modal -->
+    <div class="modal" id="todo_form">
+      <div class="header">
+        <div class="title">Add Tools</div>
+        <button class="btn close-modal">&times;</button>
+      </div>
+      <div class="body">
+		<input type="text" id="todo_input" placeholder="Title" />
+        <input type="text" id="todo_input2" placeholder="Description" />
+		<input type="text" id="todo_input3" placeholder="Link" />
+        <input type="submit" value="Add Online Tools" id="todo_submit" />
+      </div>
+    </div>
+    <!-- todo -->
+    <div class="todo-container">
+      <div class="status" id="no_status">
+        <h1>---</h1>
+        <button id="add_btn" data-target-modal="#todo_form">+ Add Tools</button>
+		
+        <div class="todo" draggable="true">
+          Translator
+          <span class="close">&times;</span>
+        </div>
+		        <div class="todo" draggable="true">
+          Calculator
+          <span class="close">&times;</span>
+        </div>        
+      </div>
+      <div class="status">
+        <h1>Languages</h1>
+		<div class="todo" draggable="true">
+          Google Translate
+          <span class="close">&times;</span>
+        </div>
+
+        <div class="todo" draggable="true">
+          Chinese Translate
+          <span class="close">&times;</span>
+        </div>
+
+        <div class="todo" draggable="true">
+          English Translate
+          <span class="close">&times;</span>
+        </div>
+
+      </div>
+      
+      <div class="status">
+        <h1>Math</h1>
+		
+		        <div class="todo" draggable="true">
+              Mathematic-Wolfram
+          <span class="close">&times;</span>
+        </div>
+		
+		        <div class="todo" draggable="true">
+              Math.com
+          <span class="close">&times;</span>
+        </div>
+		
+      </div>
+      <div class="status">
+        <h1>Science</h1>
+		
+		        <div class="todo" draggable="true">
+              Open Science
+          <span class="close">&times;</span>
+        </div>
+		
+		
+		        <div class="todo" draggable="true">
+              Science Speaks
+          <span class="close">&times;</span>
+        </div>
+		
+		
+		        <div class="todo" draggable="true">
+              Science
+          <span class="close">&times;</span>
+        </div>
+		
+		
+      </div>
+	       <div class="status">
+        <h1>Others</h1>
+		  <div class="todo" draggable="true">
+        Welcome to Python
+          <span class="close">&times;</span>
+        </div>
+		
+		  <div class="todo" draggable="true">
+        Codecademy
+          <span class="close">&times;</span>
+        </div>
+		
+		
+
+    </div>
+
+    <div id="overlay"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

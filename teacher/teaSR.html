@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+<head>
+
+  <script src="../jslib/jquery-3.6.0.js"></script>
+  <script src="../jslib/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="../jslib/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.css">
+
+
+  <script>
+
+  </script>
+
+  <script>
+
+    $(document).ready(function () {
+
+      $(function () {
+        $("#viewAttance").click(function () { //edit button
+
+          $("#stuRec").dialog("open");
+
+          return false;
+
+        });
+        $("#buildyourform").on('click', '#add', function () {
+
+          $("#stuRec").dialog("open");
+
+          return false;
+        });
+        $(".tablesort3").hide();
+        $("#resultpp").hide();
+
+
+        $("#searchButton2").click(function () {
+          $(".tablesort3").show();
+          $("#resultpp").hide();
+
+          $("#indisearchResslu").animate({
+            backgroundColor: ["#2196F3"],
+            height: ["hide", "swing"],
+
+          }, 50);
+          $("#resultpp").show();
+          $("#indisearchResslu").animate({
+            backgroundColor: ["white"],
+            height: ["show", "swing"],
+
+          }, 500);
+
+        })
+
+        $("#reportYear").text("Report of 2021:");
+        $("#searchYearly").click(function () {
+
+          $(".reportarea").animate({
+            backgroundColor: ["#2196F3"],
+            height: ["hide", "swing"],
+
+          }, 50);
+          $(".reportarea").animate({
+            backgroundColor: "white",
+            height: ["show", "swing"],
+
+          }, 500);
+          var a26 = $(".setyear").val();
+
+          $("#reportYear").text("Report of " + a26 + ":");
+        });
+
+        $(".setyear").selectmenu().selectmenu("menuWidget").addClass("overflow");
+
+
+        $("#viewAttance").click(function () { //edit button
+
+          $("#stuRec").dialog("open");
+
+          return false;
+
+        });
+
+        $("#datatable2").on('click', '#viewAttance', function () {
+
+          $("#stuRec").dialog("open");
+
+        });
+        $(".tablesort3").on('click', '#viewAttance', function () {
+
+          $("#stuRec").dialog("open");
+
+        });
+
+
+
+        $('#aaad3').change(function () {
+          var abcc = $(this).children('option:selected').val();
+
+          $("#chooseYearGood").animate({
+            backgroundColor: ["#2196F3"],
+
+
+          }, 500);
+          $("#chooseYearGood").animate({
+            backgroundColor: ["white"],
+
+          }, 500);
+
+
+          if (abcc == 1) {
+            $(".tablesort").html("        <thead>          <tr class='header'>                        <th>AY📅⇅</th>            <th>Class👨‍🏫⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>Active: The class is on going.</p>                  <p>Canceled: Class canceled because not enough student.</p>                  <p>Archived: The class closed by admin.</p>                </span>              </a> Status🗨️⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>View: View Class detail and Student list,</p>                  <p>Manage: Add/Drop students to class </p>                  <p>Edit: Edit Class information</p>                </span>              </a>Action🔧</th>          </tr>        </thead>        <tbody>                      <td>21/22</td>            <td>1A</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>1B</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>1C</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>1D</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>")
+
+
+          } else if (abcc == 2) {
+            $(".tablesort").html("        <thead>          <tr class='header'>                        <th>AY📅⇅</th>            <th>Class👨‍🏫⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>Active: The class is on going.</p>                  <p>Canceled: Class canceled because not enough student.</p>                  <p>Archived: The class closed by admin.</p>                </span>              </a> Status🗨️⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>View: View Class detail and Student list,</p>                  <p>Manage: Add/Drop students to class </p>                  <p>Edit: Edit Class information</p>                </span>              </a>Action🔧</th>          </tr>        </thead>        <tbody>                      <td>21/22</td>            <td>2A</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>2B</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>2C</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>2D</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>");
+
+
+          } else if (abcc == 3) {
+            $(".tablesort").html("        <thead>          <tr class='hyeader'>                        <th>AY📅⇅</th>            <th>Class👨‍🏫⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>Active: The class is on going.</p>                  <p>Canceled: Class canceled because not enough student.</p>                  <p>Archived: The class closed by admin.</p>                </span>              </a> Status🗨️⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>View: View Class detail and Student list,</p>                  <p>Manage: Add/Drop students to class </p>                  <p>Edit: Edit Class information</p>                </span>              </a>Action🔧</th>          </tr>        </thead>        <tbody>                      <td>21/22</td>            <td>3A</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>3B</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>3C</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>3D</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>");
+
+
+          } else if (abcc == 4) {
+            $(".tablesort").html("        <thead>          <tr class='header'>                        <th>AY📅⇅</th>            <th>Class👨‍🏫⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>Active: The class is on going.</p>                  <p>Canceled: Class canceled because not enough student.</p>                  <p>Archived: The class closed by admin.</p>                </span>              </a> Status🗨️⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>View: View Class detail and Student list,</p>                  <p>Manage: Add/Drop students to class </p>                  <p>Edit: Edit Class information</p>                </span>              </a>Action🔧</th>          </tr>        </thead>        <tbody>                      <td>21/22</td>            <td>4A</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>4B</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>4C</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>4D</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>");
+
+
+          } else if (abcc == 5) {
+            $(".tablesort").html("        <thead>          <tr class='header'>                        <th>AY📅⇅</th>            <th>Class👨‍🏫⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>Active: The class is on going.</p>                  <p>Canceled: Class canceled because not enough student.</p>                  <p>Archived: The class closed by admin.</p>                </span>              </a> Status🗨️⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>View: View Class detail and Student list,</p>                  <p>Manage: Add/Drop students to class </p>                  <p>Edit: Edit Class information</p>                </span>              </a>Action🔧</th>          </tr>        </thead>        <tbody>                      <td>21/22</td>            <td>5A</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>5B</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>5C</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>5D</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>");
+
+
+          } else if (abcc == 6) {
+            $(".tablesort").html("        <thead>          <tr class='header'>                        <th>AY📅⇅</th>            <th>Class👨‍🏫⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>Active: The class is on going.</p>                  <p>Canceled: Class canceled because not enough student.</p>                  <p>Archived: The class closed by admin.</p>                </span>              </a> Status🗨️⇅</th>            <th><a class='tooltip'>ⓘ                <span class='tooltiptext'>                  <p>View: View Class detail and Student list,</p>                  <p>Manage: Add/Drop students to class </p>                  <p>Edit: Edit Class information</p>                </span>              </a>Action🔧</th>          </tr>        </thead>        <tbody>                      <td>21/22</td>            <td>6A</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>                      <td>21/22</td>            <td>6B</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button><button class='buttonTD1'>Manage</button><button                class='buttonTD2'>Edit</button></td>          </tr>                      <td>21/22</td>            <td>6C</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button><button class='buttonTD1'>Manage</button><button                class='buttonTD2'>Edit</button></td>          </tr>                      <td>21/22</td>            <td>6D</td>            <td><button class='statusBarAct'>Active</button></td>            <td><button class='buttonTD'>View</button>          </tr>");
+          }
+        });
+
+
+        $('#choose2').hide();
+        $('input[type="radio"]').click(function () {
+          if ($(this).attr('id') == 'radio1') {
+            $('#choose1').show();
+          }
+
+          else {
+            $('#choose1').hide();
+          }
+        });
+
+        $('input[type="radio"]').click(function () {
+          if ($(this).attr('id') == 'radio2') {
+            $('#choose2').show();
+          }
+
+          else {
+            $('#choose2').hide();
+          }
+        });
+
+
+        $('body').on('click', '.buttonTD', function () {
+          $("#ViewDia").dialog("open");
+        });
+        $('body').on('click', '.buttonTD1', function () {
+          $("#ManDia").dialog("open");
+        });
+        $('body').on('click', '.buttonTD2', function () {
+          $("#EditDia").dialog("open");
+        });
+
+
+
+
+      })
+
+      $("#arcButt").click(function () {
+
+
+
+      })
+
+
+
+
+      $("#clearList").click(function () {
+        $("#rightProcess").html("")
+        $("#rightProcess").append("<option value='3'></option>")
+      });
+
+      $("#adminStuList").click(function () {
+        $("#rightProcess").append(" <option value='3'>Chan Tai</option><option value='4'>Tomson</option><option value='4'>Bobby</option><option value='4'>Edwin</option><option value='4'>Banana</option><option value='4'>Peter</option><option value='4'>Jasper</option><option value='4'>Sunny</option><option value='4'>Nick</option>")
+      });
+
+
+
+      $("#dialog1").dialog({
+        autoOpen: false
+      });
+
+      $("#opener").click(function () {
+        $("#dialog1").dialog('open');
+      });
+
+
+      $('.tablesort th').on('click', function (e) {
+        sortTableByColumn(this);
+      })
+        ;
+      $('.tablesort2 th').on('click', function (e) {
+        sortTableByColumn(this);
+      })
+        ;
+      function sortTableByColumn(tableHeader) {
+        // extract all the relevant details
+        let table = tableHeader.closest('table')
+        let index = tableHeader.cellIndex
+        let sortType = tableHeader.dataset.sortType
+        let sortDirection = tableHeader.dataset.sortDir || 'asc' // default sort to ascending
+
+        // sort the table rows
+        let items = Array.prototype.slice.call(table.rows);
+        let sortFunction = getSortFunction(sortType, index, sortDirection)
+        let sorted = items.sort(sortFunction)
+
+        // remove and re-add rows to table
+        for (let row of sorted) {
+          let parent = row.parentNode
+          let detatchedItem = parent.removeChild(row)
+          parent.appendChild(row)
+        }
+
+        // reset heading values and styles
+        for (let header of tableHeader.parentNode.children) {
+          header.classList.remove('currently-sorted')
+          delete header.dataset.sortDir
+        }
+
+        // update this headers's values and styles
+        tableHeader.dataset.sortDir = sortDirection == 'asc' ? 'desc' : 'asc'
+        tableHeader.classList.add('currently-sorted')
+      }
+
+      function getSortFunction(sortType, index, sortDirection) {
+        let dir = sortDirection == 'asc' ? -1 : 1
+        switch (sortType) {
+          case 'text': return stringRowComparer(index, dir);
+          case 'numeric': return numericRowComparer(index, dir);
+          default: return stringRowComparer(index, dir);
+        }
+      }
+
+      // asc = alphanumeric order - eg 0->9->a->z
+      // desc = reverse alphanumeric order - eg z->a->9->0
+      function stringRowComparer(index, direction) {
+        return (a, b) => -1 * direction * a.children[index].textContent.localeCompare(b.children[index].textContent)
+      }
+
+      // asc = higest to lowest - eg 999->0
+      // desc = lowest to highest - eg 0->999
+      function numericRowComparer(index, direction) {
+        return (a, b) => direction * (Number(a.children[index].textContent) - Number(b.children[index].textContent))
+      }
+
+
+
+
+
+      var keyword;
+      $("tr:odd").addClass("striped");
+
+      $(".tablesort").click(function () {
+        $("tr").removeClass("striped");
+        $("tr:odd").addClass("striped");
+      });
+
+      $(function () {
+        $(".styled-input5 input").keyup(function () {
+          var keyword = $(this).val();
+
+          $(".tablesort2 tr:not(tr:contains(keyword))").hide();
+          $(".tablesort2 tr:contains(" + keyword + ")").show();
+          $(".tablesort2 tr:contains(Class No.⇅)").show();
+          var n = $('.tablesort2 tr:visible').length;
+          if (!keyword) {
+            $("tr").show();
+          }
+
+          var count = $("#noResult").length;
+
+          if ((n < 2)) {
+            if ($("body").hasClass(".noRec")) {
+              $("#noResult").html("");
+            } else {
+              $("#noResult").html("<div style='background-color:#ccc;color:red;text-align:center'><br><br>No Record Found! <a class='tooltip2'>ⓘ<span class='tooltiptext2'><p>Try check your input again! </p></span></a><br><br><br></div>");
+            }
+          } else {
+            $("#noResult").html("");
+          }
+        });
+
+        $(".styled-input input").keyup(function () {
+          var keyword = $(this).val();
+
+          $(".tablesort tr:not(tr:contains(keyword))").hide();
+          $(".tablesort tr:contains(" + keyword + ")").show();
+          $(".tablesort tr:contains(AY)").show();
+          var n = $('tr:visible').length;
+          if (!keyword) {
+            $("tr").show();
+          }
+
+          var count = $(".noRec").length;
+
+          if ((n < 2)) {
+            if ($("body").hasClass(".noRec")) {
+              $(".noRec").html("");
+            } else {
+              $(".noRec").html("<div style='background-color:#ccc;color:red;text-align:center'><br><br>No Record Found! <a class='tooltip2'>ⓘ<span class='tooltiptext2'><p>Try check your input again! </p></span></a><br><br><br></div>");
+            }
+          } else {
+            $(".noRec").html("");
+          }
+        });
+
+      });
+
+      $('.styled-input2 input').keyup(function () {
+        var valthis = $(this).val().toLowerCase();
+        var num = 0;
+        $('select#leftProcess>option').each(function () {
+          var length = $('#mySelectList > option').length;
+          var length2 = $("leftProcess option[value='321']").length;
+
+          var text = $(this).text().toLowerCase();
+          if (text.indexOf(valthis) !== -1) { $(this).show(); }
+          else { $(this).hide(); }
+
+
+          if ($('.styled-input2 input').val().length > 0) {
+            $("option[value=321]").remove();
+            $('#leftProcess').append($('<option>', { value: '321', text: '' }));
+          } else if (length2 > 2) {
+            $("option[value=321]").remove();
+            $('#leftProcess').append($('<option>', { value: '321', text: '' }));
+          } else {
+            $('#leftProcess').append($('<option>', { value: '321', text: '' }));
+            $("option[value=321]").remove();
+          }
+
+        });
+      });
+
+
+
+
+
+      $(".buttonTD").mouseenter(function () {
+        $(this).css("background-color", "aqua");
+      });
+
+      $(".buttonTD").mouseleave(function () {
+        $(this).css("background-color", "rgb(149, 156, 255)");
+      });
+
+      $(".buttonTD1").mouseenter(function () {
+        $(this).css("background-color", "aqua");
+      });
+
+      $(".buttonTD1").mouseleave(function () {
+        $(this).css("background-color", "rgb(149, 122, 90)");
+      });
+
+      $(".buttonTD2").mouseenter(function () {
+        $(this).css("background-color", "aqua");
+      });
+
+      $(".buttonTD2").mouseleave(function () {
+        $(this).css("background-color", "rgb(116, 52, 63)");
+      });
+
+    });
+
+
+
+
+
+
+
+  </script>
+  <style type="text/css">
+    table.tablesort th.currently-sorted[data-sort-dir="asc"]::after {
+      content: "\25b2";
+    }
+
+    table.tablesort th.currently-sorted[data-sort-dir="desc"]::after {
+      content: "\25bc";
+    }
+
+    body,
+    td {
+      font-size: 10pt;
+    }
+
+    table,
+    th,
+    td {
+      border-bottom: 1px solid black;
+    }
+
+
+    table {
+      background-color: black;
+      border: 1px black solid;
+      border-collapse: collapse;
+      border-radius: 30px;
+    }
+
+    th {
+      border: 2px outset silver;
+      background-color: gray;
+      color: white;
+      cursor: pointer;
+
+
+    }
+
+    th:hover {
+
+      background-color: aqua;
+
+
+    }
+
+    tr {
+      background-color: white;
+      margin: 1px;
+    }
+
+    tr.striped {
+      background-color: lightblue;
+    }
+
+    tr.over {
+      background-color: gold;
+    }
+
+    td {
+      padding: 1px 8px;
+    }
+  </style>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="Welcome Back!!!">
+  <meta name="description" content="">
+  <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <title>Searching & Reporting</title>
+  <link rel="stylesheet" href="nicepage1.css" media="screen">
+  <link rel="stylesheet" href="adSR.css" media="screen">
+
+  <script class="u-script" type="text/javascript" src="nicepage1.js" defer=""></script>
+  <meta name="generator" content="Nicepage 3.26.0, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/1280px-VTC.svg.png"
+}</script>
+  <meta name="theme-color" content="#478ac9">
+  <meta property="og:title" content="Home">
+  <meta property="og:type" content="website">
+
+
+
+
+  <script type="text/javascript">
+    $(function () {
+      var tmpNumber = 0;
+      $("#ViewDia").dialog({    //view view
+        'width': $(window).width() - 300,
+        'height': $(window).height() - 300,
+        autoOpen: false,
+        draggable: false,
+        show: "blind",
+        modal: true,
+        hide: "explode",
+        dialogClass: 'no-close success-dialog',
+
+
+        buttons: [
+
+          {
+            text: "Cancel",
+            "class": 'cancelButtonClass',
+
+            style: "background-color:yellow",
+            click: function () {
+              // Cancel code here
+              $("#ViewDia").dialog("close");
+            }
+          }
+        ]
+
+      });
+
+      $(".buttonTD").click(function () {  //view button
+
+        $("#ViewDia").dialog("open");
+
+        return false;
+
+      });
+
+      $("#ManDia").dialog({ // manage view
+        draggable: false,
+        'width': $(window).width() - 700,
+        'height': $(window).height() - 500,
+        autoOpen: false,
+
+        show: "blind",
+        modal: true,
+        hide: "explode",
+
+        buttons: [
+
+          {
+            text: "Cancel",
+            "class": 'cancelButtonClass',
+            click: function () {
+              $("#ManDia").dialog("close");
+              $(".tablesort3").hide();
+              $("#resultpp").hide();
+            }
+          }
+        ]
+
+      });
+
+      $("#canButt").click(function () { //maanage button
+
+        $("#ManDia").dialog("open");
+
+        return false;
+
+      });
+
+      $("#EditDia").dialog({    //edit view
+        draggable: false,
+        'width': $(window).width() - 300,
+        'height': $(window).height() - 300,
+        autoOpen: false,
+
+        show: "blind",
+        modal: true,
+        hide: "explode",
+
+        buttons: [
+
+          {
+            text: "Close",
+            style: "background-color:yellow",
+            "class": 'cancelButtonClass',
+            click: function () {
+              $("#EditDia").dialog("close");
+              var textcontent11 = "AY21/22 2C, math elite class, two student need special care.";
+              $("#classteachernameinput1").val("Chan Tai Man");
+              $(".classteachernameinput2").val(textcontent11);
+            }
+          }
+        ]
+
+      });
+
+      $("#stuRec").dialog({    //edit view
+        draggable: false,
+        'width': $(window).width() - 300,
+        'height': $(window).height() - 300,
+        autoOpen: false,
+
+        show: "blind",
+        modal: true,
+        hide: "explode",
+
+        buttons: [
+
+          {
+            text: "Print",
+            style: "background-color:greenyellow",
+            "class": 'cancelButtonClass',
+            click: function () {
+              var url = "2021.html";
+              var printWindow = window.open(url, 'Print', 'left=200, top=200, width=950, height=500, toolbar=0, resizable=0');
+              printWindow.addEventListener('load', function () {
+                printWindow.print();
+                printWindow.print();
+
+              }, true);
+
+
+
+
+            }
+          },
+          {
+            text: "Back",
+            style: "background-color:yellow",
+            "class": 'cancelButtonClass',
+            click: function () {
+              $(this).dialog("close");
+
+            }
+          }
+        ]
+
+      });
+
+      $("#viewAttance").click(function () { //edit button
+
+        $("#stuRec").dialog("open");
+        $('#stuRec').css('overflow', 'hidden');
+        return false;
+
+      });
+
+      $("#arcButt").click(function () { //edit button
+
+        $("#EditDia").dialog("open");
+
+        return false;
+
+      });
+
+      $("#classAdder").dialog({   //add class
+        draggable: false,
+        'width': $(window).width() - 300,
+        'height': $(window).height() - 300,
+        autoOpen: false,
+
+        show: "blind",
+        modal: true,
+        hide: "explode",
+
+        buttons: [
+          {
+            text: "Save",
+            "class": 'saveButtonClass',
+            style: "background-color:greenyellow",
+            click: function () {
+              // Save code here
+              var a = $("#classes option:selected").text();
+              var b = $("#classnameinput ").val();
+              var c = $(".classDesc").val();
+
+              if (a == "Please pick one") {
+                alert("Please Choose a Class");
+
+              } else if (document.body.innerHTML.indexOf("<td>2B</td><td><buttonclass='statusBarAct'>Active</button></td>") > -1) {
+                // whatever
+                alert("Class Already Active!");
+
+              }
+
+              else if (a == "2C" || a == "2D") {
+                alert("Class Already Exist!");
+
+              }
+              else {
+
+                if (!($(".inputTmp").val())) {
+                  alert("Please class teacher name");
+                } else if (!$(".classDesc").val()) {
+                  alert("Please enter class description");
+                } else {
+
+                  $("#successDia").dialog("open");
+                  $(this).dialog("close");
+                  var className = $("#classnameinput").val();
+
+
+
+                  var desName = $(".classnameinput").val();
+                  $("#classnameinput").val("");
+                  $(".classnameinput").val("");
+                  jQuery.ready();
+                  $("<tr> <td><label class='container'><input type='checkbox'><span class='checkmark'></span></label></td><td>21/22</td><td>" + a + "</td><td><button class='statusBarAct'>Active</button></td><td><button class='buttonTD'>View</button><button class='buttonTD1'>Manage</button><button class='buttonTD2' onclick='aaa();' >Edit</button></td></tr>").insertBefore('table > tbody > tr:first')
+                  jQuery.ready();
+                  $(".buttonTD").mouseenter(function () {
+                    $(this).css("background-color", "aqua");
+                  });
+
+                  $(".buttonTD").mouseleave(function () {
+                    $(this).css("background-color", "rgb(149, 156, 255)");
+                  });
+
+                  $(".buttonTD1").mouseenter(function () {
+                    $(this).css("background-color", "aqua");
+                  });
+
+                  $(".buttonTD1").mouseleave(function () {
+                    $(this).css("background-color", "rgb(149, 122, 90)");
+                  });
+
+                  $(".buttonTD2").mouseenter(function () {
+                    $(this).css("background-color", "aqua");
+                  });
+
+                  $(".buttonTD2").mouseleave(function () {
+                    $(this).css("background-color", "rgb(116, 52, 63)");
+                  });
+                  var css = $("#datatable tbody tr:first").css;
+                  $("#datatable tbody tr:first").css("background-color", "red");
+
+                  setTimeout(function () {
+                    $("#datatable tbody tr:first").css("background-color", "yellow").effect("highlight", {}, 3000);
+                    $("#datatable tbody tr").eq(1).css("background-color", "").effect("");
+
+                  }, 2000);
+                  $("tr:odd").addClass("striped");
+
+                  $(".tablesort").click(function () {
+                    $("tr").removeClass("striped");
+                    $("tr:odd").addClass("striped");
+                  });
+                }
+                jQuery.ready();
+
+              }
+
+              jQuery.ready();
+            }
+          },
+          {
+            text: "Cancel",
+            "class": 'cancelButtonClass',
+            click: function () {
+              $(this).dialog("close");
+              $("#classnameinput").val("");
+              $(".classnameinput").val("");
+            }
+          }
+        ]
+
+      });
+
+      $(".addClass").click(function () {  //add class button
+
+        $("#classAdder").dialog("open");
+
+        return false;
+
+      });
+
+      $("#ccpDia").dialog({   //add class
+        draggable: false,
+        'width': $(window).width() - 300,
+        'height': $(window).height() - 300,
+        autoOpen: false,
+
+        show: "blind",
+        modal: true,
+        hide: "explode",
+        buttons: [
+          {
+
+            text: "Download",
+            "class": 'saveButtonClass',
+            style: "background-color:greenyellow",
+            click: function () {
+              // Save code here
+              var valFileDownloadPath = 'AttendanceReport.docx';
+              window.open(valFileDownloadPath, '_blank');
+              $("#downdia").dialog("open");
+            }
+          },
+          {
+            text: "Close",
+            "class": 'cancelButtonClass',
+            click: function () {
+              $("#ccpDia").dialog("close");
+              $("#radio1").prop("checked", true);
+            }
+          }
+        ]
+
+        ,
+        open: function (event, ui) {
+          setTimeout(function () {
+            $('#successDia').dialog('close');
+          }, 3000);
+        }
+      });
+
+      $(".ccp").click(function () {  //add class button
+
+        $("#ccpDia").dialog("open");
+
+        return false;
+
+      });
+
+
+      $("#ccpDia2").dialog({   //add class
+        draggable: false,
+        'width': $(window).width() - 300,
+        'height': $(window).height() - 300,
+        autoOpen: false,
+
+        show: "blind",
+        modal: true,
+        hide: "explode",
+        buttons: [
+          {
+
+            text: "Download",
+            "class": 'saveButtonClass',
+            style: "background-color:greenyellow",
+            click: function () {
+              // Save code here
+              var valFileDownloadPath = 'AttendanceReport.docx';
+              window.open(valFileDownloadPath, '_blank');
+              $("#downdia").dialog("open");
+            }
+          },
+          {
+            text: "Close",
+            "class": 'cancelButtonClass',
+            click: function () {
+              $("#ccpDia2").dialog("close");
+              $("#radio12").prop("checked", true);
+            }
+          }
+        ]
+
+        ,
+        open: function (event, ui) {
+          setTimeout(function () {
+            $('#successDia2').dialog('close');
+          }, 3000);
+        }
+      });
+
+      $("#genClassReport").click(function () {  //add class button
+
+        $("#ccpDia2").dialog("open");
+
+        return false;
+
+      });
+
+
+
+      $("#successDia").dialog({   //add class
+        position: { my: 'center', at: 'center', of: window },
+        'width': 450,
+        'height': 350,
+        autoOpen: false,
+        show: "blind",
+        hide: "explode",
+        open: function (event, ui) {
+          setTimeout(function () {
+            $('#successDia').dialog('close');
+          }, 3000);
+        }
+      });
+      $("#savesuccessDia").dialog({   //add class
+        position: { my: 'center', at: 'center', of: window },
+        'width': 450,
+        'height': 350,
+        autoOpen: false,
+        show: "blind",
+        hide: "explode",
+        open: function (event, ui) {
+          setTimeout(function () {
+            $('#savesuccessDia').dialog('close');
+          }, 3000);
+        }
+      });
+      $("#changeDia").dialog({   //add class
+        position: { my: 'center', at: 'center', of: window },
+        'width': 450,
+        'height': 350,
+        autoOpen: false,
+        show: "blind",
+        hide: "explode",
+        open: function (event, ui) {
+          setTimeout(function () {
+            $('#changeDia').dialog('close');
+          }, 3000);
+        }
+      });
+      $("#downdia").dialog({   //add class
+        position: { my: 'center', at: 'center', of: window },
+        'width': 450,
+        'height': 350,
+        autoOpen: false,
+        show: "blind",
+        hide: "explode",
+        open: function (event, ui) {
+          setTimeout(function () {
+            $('#downdia').dialog('close');
+          }, 3000);
+        }
+      });
+
+      $("#ccpClassatt").dialog({   //add class
+        draggable: false,
+        'width': $(window).width() - 300,
+        'height': $(window).height() - 300,
+        autoOpen: false,
+
+        show: "blind",
+        modal: true,
+        hide: "explode",
+        buttons: [
+          {
+            text: "Close",
+            "class": 'cancelButtonClass',
+            style: "background-color:yellow",
+            click: function () {
+              $("#ccpClassatt").dialog("close");
+              $("#radio1").prop("checked", true);
+            }
+          }
+        ]
+
+        ,
+        open: function (event, ui) {
+          setTimeout(function () {
+            $('#successDia').dialog('close');
+          }, 3000);
+        }
+      });
+
+
+      $("#seeClassAttan").click(function () {  //add class button
+
+        $("#ccpClassatt").dialog("open");
+
+        return false;
+
+      });
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body class="u-body">
+  <header class="u-clearfix u-header u-palette-1-light-2 u-sticky u-sticky-875e u-header" id="sec-738b">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <a href="index.html" class="u-image u-logo u-image-1" data-image-width="1280" data-image-height="864">
+            <img src="images/1280px-VTC.svg.png" class="u-logo-image u-logo-image-1">
+        </a>
+        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+            <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+                <a class="u-button-style u-custom-active-color u-custom-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                    href="#">
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+                    </svg>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
+                                <rect y="1" width="16" height="2"></rect>
+                                <rect y="7" width="16" height="2"></rect>
+                                <rect y="13" width="16" height="2"></rect>
+                            </symbol>
+                        </defs>
+                    </svg>
+                </a>
+            </div>
+            <div class="u-custom-menu u-nav-container">
+                <ul class="u-nav u-unstyled u-nav-1">
+                    <li class="u-nav-item"><a
+                            class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                            href="index.html" style="padding: 10px 20px;">Home</a>
+                    </li>
+                    <li class="u-nav-item"><a
+                            class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                            href="teAC1.html" style="padding: 10px 20px;">Account Management</a>
+                    </li>
+                    <li class="u-nav-item"><a
+                            class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                            href="teaCA.html" style="padding: 10px 20px;">Class allocation</a>
+                    </li>
+                    <li class="u-nav-item"><a
+                            class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                            href="teaSR.html" style="padding: 10px 20px;">Searching &amp; reporting</a>
+                    </li>
+					                        <br>
+                        <li class="u-nav-item"><a
+                            class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                            href="teTA.html" style="padding: 10px 20px;">Attendance Management
+                        </a>
+                    </li>
+                    <li class="u-nav-item"><a
+                            class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                            href="teaLC.html" style="padding: 10px 20px;">Learning Center</a>
+                    </li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="u-custom-menu u-nav-container-collapse">
+                <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                    <div class="u-inner-container-layout u-sidenav-overflow">
+                        <div class="u-menu-close"></div>
+                        <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html"
+                                    style="padding: 10px 20px;">Home</a>
+                            </li>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="teAC1.html"
+                                    style="padding: 10px 20px;">Account
+                                    Management</a>
+
+                            </li>
+                            <li class="u-nav-item"><a
+                                    class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                    href="teaCA.html" style="padding: 10px 20px;">Class allocation</a>
+                            </li>
+                            <li class="u-nav-item"><a
+                                    class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                    href="stRE.html" style="padding: 10px 20px;">Searching &amp; reporting</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="u-custom-menu u-nav-container-collapse">
+                        <div
+                            class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                            <div class="u-inner-container-layout u-sidenav-overflow">
+                                <div class="u-menu-close"></div>
+                                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
+                                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html"
+                                            style="padding: 10px 20px;">Home</a>
+                                    </li>
+                                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="teAC1.html"
+                                            style="padding: 10px 20px;">Account
+                                            Management</a>
+
+                                    </li>
+                                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="teaCA.html"
+                                            style="padding: 10px 20px;">Class allocation</a>
+                                    </li>
+                                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="teaSR.html"
+                                            style="padding: 10px 20px;">Searching &amp; reporting</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+                    </div>
+        </nav><span class="u-icon u-icon-circle u-text-white u-icon-1" data-href="../login/login.html"><svg
+                class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512.00533 512" style="">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-cb6c"></use>
+            </svg><svg class="u-svg-content" viewBox="0 0 512.00533 512" id="svg-cb6c">
+                <path
+                    d="m320 277.335938c-11.796875 0-21.332031 9.558593-21.332031 21.332031v85.335937c0 11.753906-9.558594 21.332032-21.335938 21.332032h-64v-320c0-18.21875-11.605469-34.496094-29.054687-40.554688l-6.316406-2.113281h99.371093c11.777344 0 21.335938 9.578125 21.335938 21.335937v64c0 11.773438 9.535156 21.332032 21.332031 21.332032s21.332031-9.558594 21.332031-21.332032v-64c0-35.285156-28.714843-63.99999975-64-63.99999975h-229.332031c-.8125 0-1.492188.36328175-2.28125.46874975-1.027344-.085937-2.007812-.46874975-3.050781-.46874975-23.53125 0-42.667969 19.13281275-42.667969 42.66406275v384c0 18.21875 11.605469 34.496093 29.054688 40.554687l128.386718 42.796875c4.351563 1.34375 8.679688 1.984375 13.226563 1.984375 23.53125 0 42.664062-19.136718 42.664062-42.667968v-21.332032h64c35.285157 0 64-28.714844 64-64v-85.335937c0-11.773438-9.535156-21.332031-21.332031-21.332031zm0 0">
+                </path>
+                <path
+                    d="m505.75 198.253906-85.335938-85.332031c-6.097656-6.101563-15.273437-7.9375-23.25-4.632813-7.957031 3.308594-13.164062 11.09375-13.164062 19.714844v64h-85.332031c-11.777344 0-21.335938 9.554688-21.335938 21.332032 0 11.777343 9.558594 21.332031 21.335938 21.332031h85.332031v64c0 8.621093 5.207031 16.40625 13.164062 19.714843 7.976563 3.304688 17.152344 1.46875 23.25-4.628906l85.335938-85.335937c8.339844-8.339844 8.339844-21.824219 0-30.164063zm0 0">
+                </path>
+            </svg></span><span class="u-icon u-icon-circle u-text-palette-1-base u-icon-2" data-href="teAC2.html"><svg
+                class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 55 55" style="">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3350"></use>
+            </svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-3350"
+                style="enable-background:new 0 0 55 55;">
+                <path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
+c0.058,0.049,0.121,0.089,0.179,0.137c0.474,0.393,0.965,0.766,1.465,1.127c0.162,0.117,0.324,0.234,0.489,0.348
+c0.534,0.368,1.082,0.717,1.642,1.048c0.122,0.072,0.245,0.142,0.368,0.212c0.613,0.349,1.239,0.678,1.88,0.98
+c0.047,0.022,0.095,0.042,0.142,0.064c2.089,0.971,4.319,1.684,6.651,2.105c0.061,0.011,0.122,0.022,0.184,0.033
+c0.724,0.125,1.456,0.225,2.197,0.292c0.09,0.008,0.18,0.013,0.271,0.021C25.998,54.961,26.744,55,27.5,55
+c0.749,0,1.488-0.039,2.222-0.098c0.093-0.008,0.186-0.013,0.279-0.021c0.735-0.067,1.461-0.164,2.178-0.287
+c0.062-0.011,0.125-0.022,0.187-0.034c2.297-0.412,4.495-1.109,6.557-2.055c0.076-0.035,0.153-0.068,0.229-0.104
+c0.617-0.29,1.22-0.603,1.811-0.936c0.147-0.083,0.293-0.167,0.439-0.253c0.538-0.317,1.067-0.648,1.581-1
+c0.185-0.126,0.366-0.259,0.549-0.391c0.439-0.316,0.87-0.642,1.289-0.983c0.093-0.075,0.193-0.14,0.284-0.217l0.915-0.764
+l-0.027-0.023C51.523,42.802,55,35.55,55,27.5z M2,27.5C2,13.439,13.439,2,27.5,2S53,13.439,53,27.5
+c0,7.577-3.325,14.389-8.589,19.063c-0.294-0.203-0.59-0.385-0.893-0.537l-8.467-4.233c-0.76-0.38-1.232-1.144-1.232-1.993v-2.957
+c0.196-0.242,0.403-0.516,0.617-0.817c1.096-1.548,1.975-3.27,2.616-5.123c1.267-0.602,2.085-1.864,2.085-3.289v-3.545
+c0-0.867-0.318-1.708-0.887-2.369v-4.667c0.052-0.52,0.236-3.448-1.883-5.864C34.524,9.065,31.541,8,27.5,8
+s-7.024,1.065-8.867,3.168c-2.119,2.416-1.935,5.346-1.883,5.864v4.667c-0.568,0.661-0.887,1.502-0.887,2.369v3.545
+c0,1.101,0.494,2.128,1.34,2.821c0.81,3.173,2.477,5.575,3.093,6.389v2.894c0,0.816-0.445,1.566-1.162,1.958l-7.907,4.313
+c-0.252,0.137-0.502,0.297-0.752,0.476C5.276,41.792,2,35.022,2,27.5z"></path>
+            </svg></span>
+        <p class="u-align-center u-text u-text-1">
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
+                href="teAC2.html" data-page-id="529714637">Lin Yijun</a>
+        </p>
+    </div>
+</header>
+  <div class="u-content-layout u-sheet">
+    <aside class="u-hidden-xl u-indent-100 u-sidebar u-spacing-0 u-block-da40-1">
+      <div class="u-block u-indent-30 u-block-da40-2">
+        <div class="u-block-container u-clearfix">
+          <h5 class="u-block-header u-text u-block-da40-3"></h5>
+          <div class="u-block-content u-text u-block-da40-4"></div>
+        </div>
+      </div>
+      <div class="u-block u-indent-30 u-block-da40-5">
+        <div class="u-block-container u-clearfix">
+          <h5 class="u-block-header u-text u-block-da40-6"></h5>
+          <div class="u-block-content u-text u-block-da40-7"></div>
+        </div>
+      </div>
+      <div class="u-block u-indent-30 u-block-da40-8">
+        <div class="u-block-container u-clearfix">
+          <h5 class="u-block-header u-text u-block-da40-9"></h5>
+          <div class="u-block-content u-text u-block-da40-10"></div>
+        </div>
+      </div>
+      <style data-mode="XL">
+        .u-block-da40-1 {
+          flex-basis: auto;
+          width: 141px;
+        }
+
+        .u-block-da40-3 {
+          font-size: 1.125rem;
+          line-height: 2;
+        }
+
+        .u-block-da40-4 {
+          font-size: 0.875rem;
+          line-height: 2;
+        }
+
+        .u-block-da40-6 {
+          font-size: 1.125rem;
+          line-height: 2;
+        }
+
+        .u-block-da40-7 {
+          font-size: 0.875rem;
+          line-height: 2;
+        }
+
+        .u-block-da40-9 {
+          font-size: 1.125rem;
+          line-height: 2;
+        }
+
+        .u-block-da40-10 {
+          font-size: 0.875rem;
+          line-height: 2;
+        }
+      </style>
+      <style data-mode="LG"></style>
+      <style data-mode="MD"></style>
+      <style data-mode="SM"></style>
+      <style data-mode="XS"></style>
+    </aside>
+    <div class="u-content">
+      <h1 class="center">Searching & reporting<a class="tooltip2">ⓘ
+          <span class="tooltiptext2">
+            <p>• Search Attendance </p>
+            <p>• View Report</p>
+
+          </span>
+        </a></h1>
+      <br><br>
+
+
+
+
+
+
+
+      <!--classAdder-->
+
+      <div id="classAdder" title="Add Class">
+
+        <div class="centerThings">
+
+          <h1 class="wordHolder2" style="background-color: rgb(207, 202, 202);"">Enter The information Below:</h3>
+          <br>
+          <p class=" wordHolder">AY:21/22</p><br>
+
+
+            <!--
+
+          <div class="styled-input1">
+            <input type="text" id="classnameinput" required />
+            <label>Enter Class Name:</label>
+            <span></span>
+          </div>
+
+          <br>
+-->
+
+
+
+
+
+            <label for="classes" class="textareaThings2">Select Class:</label><br>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <select name="classes" id="classes" class="textareaThings2">
+              <option disabled selected>Please pick one</option>
+              <option>1A</option>
+              <option>1B</option>
+              <option>1C</option>
+              <option>1D</option>
+              <option>2A</option>
+              <option>2B</option>
+              <option>2C</option>
+              <option>2D</option>
+              <option>3A</option>
+              <option>3B</option>
+              <option>3C</option>
+              <option>3D</option>
+              <option>4A</option>
+              <option>4B</option>
+              <option>4C</option>
+              <option>4D</option>
+              <option>5A</option>
+              <option>5B</option>
+              <option>5C</option>
+              <option>5D</option>
+              <option>6A</option>
+              <option>6B</option>
+              <option>6C</option>
+              <option>6D</option>
+
+
+            </select>
+
+            <br>
+            <div class="styled-input1">
+              <input class="inputTmp" type="text" id="classnameinput" required />
+              <label>Enter Class Teacher Name:</label>
+              <span></span>
+            </div>
+
+            <label for="classes" class="textareaThings2">Select classroom:</label><br>
+
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <select name="classes" id="set3" class="textareaThings2">
+              <option disabled selected>Please pick one</option>
+              <option selected>Admin arrange</option>
+              <option>R101 </option>
+              <option>R102 </option>
+              <option>R103 </option>
+              <option>R104 </option>
+              <option>R105 </option>
+              <option>R201 </option>
+              <option>R202 </option>
+              <option>R203 </option>
+              <option>R204 </option>
+              <option>R205 </option>
+
+
+            </select>
+
+            <br><br>
+            <label for="classes" class="textareaThings2">Select lesson set:</label><br>
+
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <select name="classes" id="set666" class="textareaThings2">
+              <option disabled selected>Please pick one</option>
+              <option selected>default</option>
+              <option>set 1 </option>
+              <option>set 2</option>
+              <option>set 3</option>
+
+
+
+            </select>
+            <br>
+            <br>
+            <label id="classdescinput" class="textareaThings2">Enter Class Description <a class="tooltip2">ⓘ
+                <span class="tooltiptext2">
+                  <p>As short as posible. </p>
+                  <p>e.g. AY21/22 1C </p>
+                  <p>e.g. This is a elite class. </p>
+                </span>
+              </a>:</label>
+            <div class="textareaThings">
+
+              <textarea rows="4" cols="50" class="classDesc" id="textareathings"
+                placeholder="e.g. AY19/20 1C,Elite Class" required></textarea>
+
+              <span></span>
+            </div>
+        </div>
+      </div>
+
+      <!--VIEW-->
+      <div id="ViewDia"
+        title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class Detail">
+
+
+
+        <table class="tablesort2" id="datatable2" style="width: 50%;">
+          <thead>
+            <h1 class="wordHolder2" style="background-color: gainsboro;">Class Student list:</h1>
+
+            <form>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button id="genClassReport" type="button" style="left: 26%;">🧾Generate Class report</button>
+              <br><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button id="seeClassAttan" type="button" style="left: 26%;">👩‍🏫See Class Attendance </button>
+              <div class="styled-input5">
+
+                <input type="text" required />
+                <label>🔍️Filter</label>
+                <span></span>
+
+              </div>
+
+
+              <tr class="header">
+
+                <th>Class No.⇅</th>
+                <th>Name⇅</th>
+                <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td>01</td>
+              <td>Chan Tai Man</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>Man Tai Chan</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>03</td>
+              <td>Tai Man Chan</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>04</td>
+              <td>Ng Chun Yin</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>05</td>
+              <td>Wong man</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>06</td>
+              <td>Pu pok</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>07</td>
+              <td>Yuk zi tong</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>08</td>
+              <td>Tong Ka Ming</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>09</td>
+              <td>Yu Ka Lok</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+
+            <tr>
+              <td>10</td>
+              <td>Poon Wing</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>Lam Hei</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>Fan Cheuk Pan</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>Chan Yik Chun</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>Chan Yik Hin</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>Chan Tze Hin</td>
+              <td><button id="viewAttance" type="button">VIEW</button></td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+        <p id="noResult"></p>
+        </form>
+
+      </div>
+
+      <!--MANAGE-->
+
+      <script>
+        function moveRight(leftValue, rightValue) {
+          //alert("Elft value is t : "+leftValue);
+          var leftSelect = document.forms["form1"].elements[leftValue];
+          var rightSelect = document.forms["form1"].elements[rightValue];
+          //alert("test : " + document.forms["form1"].elements[myLeftId].options[selItem].value);
+          if (leftSelect.selectedIndex == -1) {
+            window.alert("You must first select an item on the left side.")
+          } else {
+            var option = leftSelect.options[leftSelect.selectedIndex];
+            rightSelect.appendChild(option);
+          }
+        }
+      </script>
+      <div id="ManDia"
+        title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student Search">
+        <h1 class="wordHolder2" style="background-color: gainsboro;">Individual Student Search: </h1>
+        <div>
+
+          <form name="form1" id="form1" onsubmit="return false;">
+
+            <div class="styled-input2">
+
+              <input type="text" required />
+              <label>Enter Student Name:</label>
+              <span></span>
+
+              <button id="searchButton2" type="button">🔍</button>
+            </div>
+            <div id="indisearchResslu">
+              <table class="tablesort3" id="datatable2" style="width: 50%;">
+                <p id="resultpp" style="text-align: center;">Result:</p>
+                <thead>
+
+                  <form>
+
+                    <tr class="header">
+
+
+                      <th>Name</th>
+                      <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                  <tr>
+
+                    <td>Chan Tai Man</td>
+                    <td><button id="viewAttance" type="button">VIEW</button></td>
+                  </tr>
+
+
+                </tbody>
+
+              </table>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!--EDIT-->
+      <div id="EditDia"
+        title=" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;School Attendance"
+        style="text-align: center;">
+        <iframe src="2022.html" width="100%" height="100%" title="W3Schools Free Online Web Tutorials"></iframe>
+        <h3 style="background-color: rgb(206, 206, 206);">Overview</h3>
+        <h4>Today:</h4> Todays Attendance: Recorded <br> Students in School today:165 people<br>School Attendance percentage: 95%
+        <p>• Late: 32 record | 3%</p>
+        <p>• Absent: 22 record | 2%</p>
+        <p>• Sick leave: 11 record | 1%</p>
+        <br>
+
+        <h4>This month:</h4>School days in this month:30days <br> Till now school days: 15 days<br> Average
+        Attendance percentage:
+        90%
+        <p>• Late: 62 record | 5%</p>
+        <p>• Absent: 52 record | 3%</p>
+        <p>• Sick leave: 31 record | 2%</p>
+        <br>
+        <br>
+
+        <br><h4> This Year:</h4> Till now school days: 90 days <br> Average Attendance percentage: 80%
+        <p>• Late: 82 record | 9%</p>
+        <p>• Absent: 52 record | 6%</p>
+        <p>• Sick leave: 51 record | 5%</p>
+        <br>
+        <br><br>
+
+
+
+
+
+
+
+
+      </div>
+
+      <!--ccp message-->
+      <div id="ccpDia"
+        title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generate Report">
+        <h1 style="text-align:center;background-color:rgb(165, 165, 165)">School Reports</h1>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        Select year :&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <select id="setYear" class="setyear">
+          <option selected>2021</option>
+          <option>2020</option>
+          <option>2019</option>
+          <option>2018</option>
+          <option>2017</option>
+          <option>2016</option>
+          <option>2015</option>
+          <option>2014</option>
+          <option>2013</option>
+
+        </select>
+        <button id="searchYearly" type="button">Search</button>
+        <br><br><br>
+
+        <div class="reportarea">
+
+          <h3 style="text-align: center;" id="reportYear">dsa</h3>
+          <p style="text-align: center;">This report show all attendance record, absent record, sick leave record, late
+            record and etc in this year.</p>
+          <p style="text-align: center;">Total students in this year: 365</p>
+
+          <br>
+
+
+
+          <p style="text-align: center;">Attendance rate:</p>
+          <img src="images/attrate.jpg" style="display: block;  width: 40%;margin-left: auto; margin-right: auto;">
+          <p style="text-align: center;">There are 20% lost of attandace in this year. </p>
+          <br>
+
+          <p style="text-align: center;">Absents Record:</p>
+          <img src="images/absRayte.jpg" style="display: block;  width: 40%;margin-left: auto; margin-right: auto;">
+          <p style="text-align: center;">There are 65 absents in total. </p>
+          <br>
+
+
+          <p style="text-align: center;">Sick Leave Record:</p>
+          <img src="images/srec.jpg" style="display: block;  width: 40%;margin-left: auto; margin-right: auto;">
+          <p style="text-align: center;">There many sick record in Dec. It is because of cold weather. </p>
+          <br>
+
+
+          <p style="text-align: center;">Late Record:</p>
+          <img src="images/lateRec.jpg" style="display: block;  width: 40%;margin-left: auto; margin-right: auto;">
+          <p style="text-align: center;">There are more and more late record when near the end of the year. </p>
+          <p style="text-align: center;">It may cause by cold weather so student cant wake up. </p>
+
+          <br>
+          <h3 style="text-align: center;">Overview:</h3>
+          <img src="images/dash.png" style="display: block;  width: 40%;margin-left: auto; margin-right: auto;">
+        </div>
+
+
+
+      </div>
+
+      <!--ccp message-->
+      <div id="ccpDia2"
+        title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generate Report">
+        <h1 style="text-align:center;background-color:rgb(165, 165, 165)">Class Reports</h1>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+        <div class="reportarea">
+
+          <h3 style="text-align: center;" id="reportYear">2C class Report</h3>
+          <p style="text-align: center;">This report show all attendance record, absent record, sick leave record, late
+            record and etc in this year.</p>
+          <p style="text-align: center;">Total students in this class: 32</p>
+
+          <br>
+
+
+
+          <p style="text-align: center;">Attendance rate:</p>
+          <img src="images/attrate.jpg" style="display: block;  width: 40%;margin-left: auto; margin-right: auto;">
+          <p style="text-align: center;">There are 20% lost of attandace in this year. </p>
+          <br>
+
+          <p style="text-align: center;">Absents Record:</p>
+          <img src="images/absRayte.jpg" style="display: block;  width: 40%;margin-left: auto; margin-right: auto;">
+          <p style="text-align: center;">There are 65 absents in total. </p>
+          <br>
+
+
+          <p style="text-align: center;">Sick Leave Record:</p>
+          <img src="images/srec.jpg" style="display: block;  width: 40%;margin-left: auto; margin-right: auto;">
+          <p style="text-align: center;">There many sick record in Dec. It is because of cold weather. </p>
+          <br>
+
+
+          <p style="text-align: center;">Late Record:</p>
+          <img src="images/lateRec.jpg" style="display: block;  width: 40%;margin-left: auto; margin-right: auto;">
+          <p style="text-align: center;">There are more and more late record when near the end of the year. </p>
+          <p style="text-align: center;">It may cause by cold weather so student cant wake up. </p>
+
+          <br>
+          <h3 style="text-align: center;">Overview:</h3>
+          <img src="images/dash.png" style="display: block;  width: 40%;margin-left: auto; margin-right: auto;">
+        </div>
+
+
+
+      </div>
+
+      <!--student record-->
+      <div id="stuRec"
+        title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student Attandace">
+
+        <iframe src="2021.html" width="100%" height="100%" title="W3Schools Free Online Web Tutorials"></iframe>
+
+
+      </div>
+
+
+      <!--student record-->
+      <div id="ccpClassatt"
+        title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student Attandace">
+        <iframe src="2022.html" width="100%" height="100%" title="W3Schools Free Online Web Tutorials"></iframe>
+
+        <div style="text-align: center;">
+          <h3 style="background-color: rgb(206, 206, 206);">Overview</h3><br>
+        <h4>Today:</h4> Todays Attendance: Recorded <br> Students in School today : 23 people<br>School Attendance percentage: 95%
+        <p>• Late: 1 record | 2.5%</p>
+        <p>• Absent: 1 record | 2.5%</p>
+        <p>• Sick leave:  0 record | 0%</p>
+        <br>
+
+        <h4>This month:</h4>School days this month:30 days <br> Till now school days: 15 days<br> Average
+        Attendance percentage:
+        90%
+        <p>• Late: 5 record | 5%</p>
+        <p>• Absent: 3 record | 3%</p>
+        <p>• Sick leave: 2 record | 2%</p>
+
+        <br><h4> This Year:</h4>School days this year: 250 days<br> Till now school days: 90 days <br> Average Attendance percentage: 80%
+        <p>• Late: 15 record | 10%</p>
+        <p>• Absent: 5 record | 3%</p>
+        <p>• Sick leave: 10 record | 6%</p>
+        <br>
+        <br><br>
+        </div>
+
+
+      </div>
+
+      <!--success message-->
+      <div id="successDia" title="CreateSuccessful">
+        <p>Create successful!</p>
+        <p>The dialog box will close in 3 seconds automatically...</p>
+      </div>
+
+      <!--save message-->
+      <div id="downdia" title="Download Successful">
+        <p>Download successful!</p>
+        <p>The dialog box will close in 3 seconds automatically...</p>
+      </div>
+
+      <!--save message-->
+      <div id="savesuccessDia" title="Edit Successful">
+        <p>Edit successful!</p>
+        <p>The dialog box will close in 3 seconds automatically...</p>
+      </div>
+
+      <!--change message-->
+      <div id="changeDia" title="Download Successful">
+        <p>Change successful!</p>
+        <p>The dialog box will close in 3 seconds automatically...</p>
+      </div>
+
+      <h2 class="center" id="YOURCLASS">All Classes:</h2>
+
+      <button id="canButt">🤵Search Individual Attendance</button>
+      <div class="styled-input">
+
+        <input type="text" required />
+        <label>🔍️Filter</label>
+        <span></span>
+
+      </div>
+
+
+      <br><br>
+
+      <div id="maintable">
+        <table class="tablesort" id="datatable">
+          <thead>
+
+            <tr class="header">
+
+              <th>AY📅⇅</th>
+              <th>Class👨‍🏫⇅</th>
+              <th><a class="tooltip">ⓘ
+                  <span class="tooltiptext">
+                    <p>Active: The class is on going.</p>
+                    <p>Canceled: Class canceled because not enough student.</p>
+                    <p>Archived: The class closed by admin.</p>
+                  </span>
+                </a> Status🗨️⇅</th>
+              <th><a class="tooltip">ⓘ
+                  <span class="tooltiptext">
+                    <p>View: View Class detail and Student list,</p>
+                    <p>Manage: Add/Drop students to class </p>
+                    <p>Edit: Edit Class information</p>
+                  </span>
+                </a>Action🔧</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+
+              <td>21/22</td>
+              <td>1A</td>
+              <td><button class="statusBarAct">Active</button></td>
+              <td><button class="buttonTD">View</button>
+            </tr>
+            <tr>
+
+              <td>21/22</td>
+              <td>1B</td>
+              <td><button class="statusBarAct">Active</button></td>
+              <td><button class="buttonTD">View</button>
+            </tr>
+            <tr>
+
+              <td>21/22</td>
+              <td>1C</td>
+              <td><button class="statusBarAct">Active</button></td>
+              <td><button class="buttonTD">View</button>
+
+            </tr>
+            <tr>
+
+              <td>21/22</td>
+              <td>1D</td>
+              <td><button class="statusBarAct">Active</button></td>
+              <td><button class="buttonTD">View</button>
+            </tr>
+
+
+          </tbody>
+
+
+        </table>
+      </div>
+
+      <div class="noRec"></div>
+      <p>*This table show one year on each page.</p>
+      <div id="chooseYearGood">
+        <p style="width: 100%;text-align:center">Year:
+          <select id="aaad3">
+
+            <option selected>1</option>
+            <option >2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+          </select>
+        </p>
+      </div>
+
+      <br>
+      <h4>Hover on the
+        <a class="tooltip2">ⓘ
+          <span class="tooltiptext2">
+            <p>There are many sign like this in this page that can help you</p>
+
+          </span>
+        </a>
+        to get more help!
+      </h4>
+
+      <br><br><br><br><br><br><br>
+    </div>
+    </section>
+  </div>
+  </div>
+
+  <div id="tmpText" style="visibility:hidden">
+  </div>
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2cf8">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1"> Copyright (c) the Man Secondary School 2021. All
+        rights reserved.</p>
+    </div>
+  </footer>
+
+
+
+
+
+</body>
+
+</html>

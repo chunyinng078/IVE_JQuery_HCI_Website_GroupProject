@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+<head>
+
+  <script src="../jslib/jquery-3.6.0.js"></script>
+  <script src="../jslib/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="../jslib/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.css">
+
+
+  <script>
+
+  </script>
+
+  <script>
+
+    $(document).ready(function () {
+      $('body').on('click', '.buttonTD', function() {
+        $("#ViewDia").dialog("open");
+     });
+     $('body').on('click', '.buttonTD1', function() {
+      $("#ManDia").dialog("open");
+   });
+      $('body').on('click', '.buttonTD2', function() {
+        $("#EditDia").dialog("open");
+     });
+      $("#actButt").click(function(){
+        $('input:checkbox:checked').parents("tr").find('td:eq(3)').html(" <button class='statusBarAct'>Active</button> ");
+        $('#changeDia').dialog('open');
+        
+      })
+
+      $("#arcButt").click(function(){
+        $('input:checkbox:checked').parents("tr").find('td:eq(3)').html("<button class='statusBarArc'>Archived</button> ");
+        $('#changeDia').dialog('open');
+      })
+
+      $("#canButt").click(function(){
+        $('input:checkbox:checked').parents("tr").find('td:eq(3)').html("<button class='statusBarCan'>Canceled</button> ");
+        $('#changeDia').dialog('open');
+      })
+
+
+      $("#clearList").click(function () {
+        $("#rightProcess").html("")
+        $("#rightProcess").append("<option value='3'></option>")
+      });
+
+      $("#adminStuList").click(function () {
+        $("#rightProcess").append(" <option value='3'>Tommy</option><option value='4'>Tomson</option><option value='4'>Bobby</option><option value='4'>Edwin</option><option value='4'>Banana</option><option value='4'>Peter</option><option value='4'>Jasper</option><option value='4'>Sunny</option><option value='4'>Nick</option>")
+      });
+
+      $(function () {
+
+        $("#classes").selectmenu().selectmenu("menuWidget").addClass("overflow");
+
+      });
+      $("#dialog1").dialog({
+        autoOpen: false
+      });
+
+      $("#opener").click(function () {
+        $("#dialog1").dialog('open');
+      });
+
+
+      $('table.tablesort th').on('click', function (e) {
+        sortTableByColumn(this)
+      })
+
+      function sortTableByColumn(tableHeader) {
+        // extract all the relevant details
+        let table = tableHeader.closest('table')
+        let index = tableHeader.cellIndex
+        let sortType = tableHeader.dataset.sortType
+        let sortDirection = tableHeader.dataset.sortDir || 'asc' // default sort to ascending
+
+        // sort the table rows
+        let items = Array.prototype.slice.call(table.rows);
+        let sortFunction = getSortFunction(sortType, index, sortDirection)
+        let sorted = items.sort(sortFunction)
+
+        // remove and re-add rows to table
+        for (let row of sorted) {
+          let parent = row.parentNode
+          let detatchedItem = parent.removeChild(row)
+          parent.appendChild(row)
+        }
+
+        // reset heading values and styles
+        for (let header of tableHeader.parentNode.children) {
+          header.classList.remove('currently-sorted')
+          delete header.dataset.sortDir
+        }
+
+        // update this headers's values and styles
+        tableHeader.dataset.sortDir = sortDirection == 'asc' ? 'desc' : 'asc'
+        tableHeader.classList.add('currently-sorted')
+      }
+
+      function getSortFunction(sortType, index, sortDirection) {
+        let dir = sortDirection == 'asc' ? -1 : 1
+        switch (sortType) {
+          case 'text': return stringRowComparer(index, dir);
+          case 'numeric': return numericRowComparer(index, dir);
+          default: return stringRowComparer(index, dir);
+        }
+      }
+
+      // asc = alphanumeric order - eg 0->9->a->z
+      // desc = reverse alphanumeric order - eg z->a->9->0
+      function stringRowComparer(index, direction) {
+        return (a, b) => -1 * direction * a.children[index].textContent.localeCompare(b.children[index].textContent)
+      }
+
+      // asc = higest to lowest - eg 999->0
+      // desc = lowest to highest - eg 0->999
+      function numericRowComparer(index, direction) {
+        return (a, b) => direction * (Number(a.children[index].textContent) - Number(b.children[index].textContent))
+      }
+
+
+
+
+
+      var keyword;
+      $("tr:odd").addClass("striped");
+
+      $(".tablesort").click(function () {
+        $("tr").removeClass("striped");
+        $("tr:odd").addClass("striped");
+      });
+
+      $('.styled-input2 input').keyup(function () {
+        var valthis = $(this).val().toLowerCase();
+        var num = 0;
+        $('select#leftProcess>option').each(function () {
+          var length = $('#mySelectList > option').length;
+          var length2 = $("leftProcess option[value='321']").length;
+
+          var text = $(this).text().toLowerCase();
+          if (text.indexOf(valthis) !== -1) { $(this).show(); }
+          else { $(this).hide(); }
+
+
+          if ($('.styled-input2 input').val().length > 0) {
+            $("option[value=321]").remove();
+            $('#leftProcess').append($('<option>', { value: '321', text: '' }));
+          } else if (length2 > 2) {
+            $("option[value=321]").remove();
+            $('#leftProcess').append($('<option>', { value: '321', text: '' }));
+          } else {
+            $('#leftProcess').append($('<option>', { value: '321', text: '' }));
+            $("option[value=321]").remove();
+          }
+
+
+
+
+
+        });
+      });
+
+      $(".styled-input input").keyup(function () {
+        var keyword = $(this).val();
+
+        $("tr:not(tr:contains(keyword))").hide();
+        $("tr:contains(" + keyword + ")").show();
+        $("tr:contains(AY)").show();
+        var n = $('tr:visible').length;
+        if (!keyword) {
+          $("tr").show();
+        }
+
+        var count = $(".noRec").length;
+
+        if ((n < 2)) {
+          if ($("body").hasClass(".noRec")) {
+            $(".noRec").html("");
+          } else {
+            $(".noRec").html("<div style='background-color:#ccc;color:red;text-align:center'><br><br>No Record Found! <a class='tooltip2'>ⓘ<span class='tooltiptext2'><p>Try check your input again! </p></span></a><br><br><br></div>");
+          }
+        } else {
+          $(".noRec").html("");
+        }
+      });
+      $(".buttonTD").mouseenter(function () {
+        $(this).css("background-color", "aqua");
+      });
+
+      $(".buttonTD").mouseleave(function () {
+        $(this).css("background-color", "rgb(149, 156, 255)");
+      });
+
+      $(".buttonTD1").mouseenter(function () {
+        $(this).css("background-color", "aqua");
+      });
+
+      $(".buttonTD1").mouseleave(function () {
+        $(this).css("background-color", "rgb(149, 122, 90)");
+      });
+
+      $(".buttonTD2").mouseenter(function () {
+        $(this).css("background-color", "aqua");
+      });
+
+      $(".buttonTD2").mouseleave(function () {
+        $(this).css("background-color", "rgb(116, 52, 63)");
+      });
+
+
+    });
+  </script>
+  <style type="text/css">
+    table.tablesort th.currently-sorted[data-sort-dir="asc"]::after {
+      content: "\25b2";
+    }
+
+    table.tablesort th.currently-sorted[data-sort-dir="desc"]::after {
+      content: "\25bc";
+    }
+
+    body,
+    td {
+      font-size: 10pt;
+    }
+
+    table,
+    th,
+    td {
+      border-bottom: 1px solid black;
+    }
+
+
+    table {
+      background-color: black;
+      border: 1px black solid;
+      border-collapse: collapse;
+       border-radius: 30px;
+    }
+
+    th {
+      border: 2px outset silver;
+      background-color: gray;
+      color: white;
+      cursor: pointer;
+
+
+    }
+
+    th:hover {
+
+      background-color: aqua;
+
+
+    }
+
+    tr {
+      background-color: white;
+      margin: 1px;
+    }
+
+    tr.striped {
+      background-color: lightblue;
+    }
+
+    tr.over {
+      background-color: gold;
+    }
+
+    td {
+      padding: 1px 8px;
+    }
+  </style>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="Welcome Back!!!">
+  <meta name="description" content="">
+  <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <title>Class Allocation</title>
+  <link rel="stylesheet" href="nicepage1.css" media="screen">
+  <link rel="stylesheet" href="stuCA.css" media="screen">
+
+  <script class="u-script" type="text/javascript" src="nicepage1.js" defer=""></script>
+  <meta name="generator" content="Nicepage 3.26.0, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/1280px-VTC.svg.png"
+}</script>
+  <meta name="theme-color" content="#478ac9">
+  <meta property="og:title" content="Home">
+  <meta property="og:type" content="website">
+
+
+
+
+  <script type="text/javascript">
+    $(function () {
+
+      $("#ViewDia").dialog({    //view view
+        'width': $(window).width() - 300,
+        'height': $(window).height() - 300,
+        autoOpen: false,
+        draggable: false,
+        show: "blind",
+        modal: true,
+        hide: "explode",
+        dialogClass: 'no-close success-dialog',
+        
+
+        buttons: [
+
+          {
+            text: "Cancel",
+            "class": 'cancelButtonClass',
+            
+            style: "background-color:yellow",
+            click: function () {
+              // Cancel code here
+              $("#ViewDia").dialog("close");
+            }
+          }
+        ]
+
+      });
+
+      $(".buttonTD").click(function () {  //view button
+
+        $("#ViewDia").dialog("open");
+
+        return false;
+
+      });
+
+      $("#ManDia").dialog({ // manage view
+        draggable: false,
+        'width': $(window).width() - 300,
+        'height': $(window).height() - 150,
+        autoOpen: false,
+
+        show: "blind",
+        modal: true,
+        hide: "explode",
+
+        buttons: [
+          {
+            text: "Save",
+            "class": 'saveButtonClass',
+            click: function () {
+              // Save code here
+              $("#savesuccessDia").dialog("open");
+            }
+          },
+          {
+            text: "Cancel",
+            "class": 'cancelButtonClass',
+            click: function () {
+              $("#ManDia").dialog("close");
+            }
+          }
+        ]
+
+      });
+
+      $(".buttonTD1").click(function () { //maanage button
+
+        $("#ManDia").dialog("open");
+
+        return false;
+
+      });
+
+      $("#EditDia").dialog({    //edit view
+        draggable: false,
+        'width': $(window).width() - 300,
+        'height': $(window).height() - 300,
+        autoOpen: false,
+
+        show: "blind",
+        modal: true,
+        hide: "explode",
+
+        buttons: [
+          {
+            text: "Save",
+            "class": 'saveButtonClass',
+            "class": 'saveButtonClass',
+            style: "background-color:greenyellow",
+            click: function () {
+
+              $("#savesuccessDia").dialog("open");
+            }
+          },
+          {
+            text: "Cancel",
+            "class": 'cancelButtonClass',
+            click: function () {
+              $("#EditDia").dialog("close");
+            }
+          }
+        ]
+
+      });
+
+      $(".buttonTD2").click(function () { //edit button
+
+        $("#EditDia").dialog("open");
+
+        return false;
+
+      });
+
+      $("#classAdder").dialog({   //add class
+        draggable: false,
+        'width': $(window).width() - 300,
+        'height': $(window).height() - 300,
+        autoOpen: false,
+
+        show: "blind",
+        modal: true,
+        hide: "explode",
+
+        buttons: [
+          {
+            text: "Save",
+            "class": 'saveButtonClass',
+            style: "background-color:greenyellow",
+            click: function () {
+              // Save code here
+              var a = $("#classes option:selected").text();
+              var b = $("#classnameinput ").val();
+              var c = $(".classDesc").val();
+
+
+              if (a == "Please pick one") {
+                alert("Please Choose A Class");
+
+              } else if (a == "2C") {
+                alert("Class 2C Already Exist!");
+
+              }
+              else {
+                $("#successDia").dialog("open");
+                $(this).dialog("close");
+                var className = $("#classnameinput").val();
+
+
+
+                var desName = $(".classnameinput").val();
+                $("#classnameinput").val("");
+                $(".classnameinput").val("");
+                jQuery.ready();
+                $("<tr><td>21/22</td><td>" + a + "</td><td><button class='statusBarAct'>Active</button></td><td><button class='buttonTD'>View</button><button class='buttonTD1'>Manage</button><button class='buttonTD2'>Edit</button></td></tr>").insertBefore('table > tbody > tr:first')
+                jQuery.ready();
+                $(".buttonTD").mouseenter(function () {
+                  $(this).css("background-color", "aqua");
+                });
+
+                $(".buttonTD").mouseleave(function () {
+                  $(this).css("background-color", "white");
+                });
+
+                $(".buttonTD1").mouseenter(function () {
+                  $(this).css("background-color", "aqua");
+                });
+
+                $(".buttonTD1").mouseleave(function () {
+                  $(this).css("background-color", "bisque");
+                });
+
+                $(".buttonTD2").mouseenter(function () {
+                  $(this).css("background-color", "aqua");
+                });
+
+                $(".buttonTD2").mouseleave(function () {
+                  $(this).css("background-color", "rgb(226, 177, 255)");
+                });
+                var css = $("#datatable tbody tr:first").css;
+                $("#datatable tbody tr:first").css("background-color", "red");
+
+                setTimeout(function () {
+                  $("#datatable tbody tr:first").css("background-color", "yellow").effect("highlight", {}, 3000);
+                  $("#datatable tbody tr").eq(1).css("background-color", "").effect("");
+
+                }, 2000);
+                $("tr:odd").addClass("striped");
+
+                $(".tablesort").click(function () {
+                  $("tr").removeClass("striped");
+                  $("tr:odd").addClass("striped");
+                });
+              }
+              jQuery.ready();
+
+            }
+          },
+          {
+            text: "Cancel",
+            "class": 'cancelButtonClass',
+            click: function () {
+              $(this).dialog("close");
+              $("#classnameinput").val("");
+              $(".classnameinput").val("");
+            }
+          }
+        ]
+
+      });
+
+      $(".addClass").click(function () {  //add class button
+
+        $("#classAdder").dialog("open");
+
+        return false;
+
+      });
+
+      $("#successDia").dialog({   //add class
+        position: { my: 'center', at: 'center', of: window },
+        'width': 450,
+        'height': 350,
+        autoOpen: false,
+        show: "blind",
+        hide: "explode",
+        open: function (event, ui) {
+          setTimeout(function () {
+            $('#successDia').dialog('close');
+          }, 3000);
+        }
+      });
+      $("#savesuccessDia").dialog({   //add class
+        position: { my: 'center', at: 'center', of: window },
+        'width': 450,
+        'height': 350,
+        autoOpen: false,
+        show: "blind",
+        hide: "explode",
+        open: function (event, ui) {
+          setTimeout(function () {
+            $('#savesuccessDia').dialog('close');
+          }, 3000);
+        }
+      });
+      $("#changeDia").dialog({   //add class
+        position: { my: 'center', at: 'center', of: window },
+        'width': 450,
+        'height': 350,
+        autoOpen: false,
+        show: "blind",
+        hide: "explode",
+        open: function (event, ui) {
+          setTimeout(function () {
+            $('#changeDia').dialog('close');
+          }, 3000);
+        }
+      });
+    });
+
+
+
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body class="u-body">
+  <header class="u-clearfix u-header u-palette-1-light-2 u-sticky u-sticky-875e u-header" id="sec-738b">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <a href="index.html" class="u-image u-logo u-image-1" data-image-width="1280" data-image-height="864">
+            <img src="images/1280px-VTC.svg.png" class="u-logo-image u-logo-image-1">
+        </a>
+        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+            <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+                <a class="u-button-style u-custom-active-color u-custom-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                    href="#">
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+                    </svg>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
+                                <rect y="1" width="16" height="2"></rect>
+                                <rect y="7" width="16" height="2"></rect>
+                                <rect y="13" width="16" height="2"></rect>
+                            </symbol>
+                        </defs>
+                    </svg>
+                </a>
+            </div>
+            <div class="u-custom-menu u-nav-container">
+              <ul class="u-nav u-unstyled u-nav-1">
+                  <li class="u-nav-item"><a
+                          class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                          href="index.html" style="padding: 10px 20px;">Home</a>
+                  </li>
+                  <li class="u-nav-item"><a
+                          class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                          href="stAC.html" style="padding: 10px 20px;">Account Management</a>
+                  </li>
+                  <li class="u-nav-item"><a
+                          class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                          href="stuCA.html" style="padding: 10px 20px;">Class allocation</a>
+                  </li>
+                  <li class="u-nav-item"><a
+                          class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                          href="stRE.html" style="padding: 10px 20px;">Searching &amp; reporting</a>
+                  </li>
+                  <br>
+                  <li class="u-nav-item"><a
+                          class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                          href="stUL.html" style="padding: 10px 20px;">Attendance Management</a>
+                  </li>
+                  <li class="u-nav-item"><a
+                          class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                          href="stLC.html" style="margin-left: auto;margin-right: auto;">Learning Center</a>
+                  </li>
+              </ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+              <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                  <div class="u-inner-container-layout u-sidenav-overflow">
+                      <div class="u-menu-close"></div>
+                      <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
+                          <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html"
+                                  style="padding: 10px 20px;">Home</a>
+                          </li>
+                          <li class="u-nav-item"><a class="u-button-style u-nav-link" href="stAC.html"
+                                  style="padding: 10px 20px;">Account
+                                  Management</a>
+          
+                          </li>
+                          <li class="u-nav-item"><a
+                                  class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                  href="stuCA.html" style="padding: 10px 20px;">Class allocation</a>
+                          </li>
+                          <li class="u-nav-item"><a
+                                  class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                  href="stRE.html" style="padding: 10px 20px;">Searching &amp; reporting</a>
+                          </li>
+                          <br>
+                          <li class="u-nav-item"><a
+                                  class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                  href="stUL.html" style="padding: 10px 20px;">Attendance Management</a>
+                          </li>
+                          <li class="u-nav-item"><a
+                                  class="u-active-palette-3-light-2 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                  href="stLC.html" style="padding: 10px 20px;">Learning Center</a>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="u-custom-menu u-nav-container-collapse">
+                      <div
+                          class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                          <div class="u-inner-container-layout u-sidenav-overflow">
+                              <div class="u-menu-close"></div>
+                              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
+                                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html"
+                                          style="padding: 10px 20px;">Home</a>
+                                  </li>
+                                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="stAC.html"
+                                          style="padding: 10px 20px;">Account
+                                          Management</a>
+          
+                                  </li>
+                                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="stuCA.html"
+                                          style="padding: 10px 20px;">Class allocation</a>
+                                  </li>
+                                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="stRE.html"
+                                          style="padding: 10px 20px;">Searching &amp; reporting</a>
+                                  </li>
+                                  <br>
+                                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="stUL.html"
+                                          style="padding: 10px 20px;">Attendance Management</a>
+                                  </li>
+                                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="stLC.html"
+                                          style="padding: 10px 20px;">Learning Center</a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+                  </div>
+        </nav><span class="u-icon u-icon-circle u-text-white u-icon-1" data-href="../login/login.html"><svg
+                class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512.00533 512" style="">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-cb6c"></use>
+            </svg><svg class="u-svg-content" viewBox="0 0 512.00533 512" id="svg-cb6c">
+                <path
+                    d="m320 277.335938c-11.796875 0-21.332031 9.558593-21.332031 21.332031v85.335937c0 11.753906-9.558594 21.332032-21.335938 21.332032h-64v-320c0-18.21875-11.605469-34.496094-29.054687-40.554688l-6.316406-2.113281h99.371093c11.777344 0 21.335938 9.578125 21.335938 21.335937v64c0 11.773438 9.535156 21.332032 21.332031 21.332032s21.332031-9.558594 21.332031-21.332032v-64c0-35.285156-28.714843-63.99999975-64-63.99999975h-229.332031c-.8125 0-1.492188.36328175-2.28125.46874975-1.027344-.085937-2.007812-.46874975-3.050781-.46874975-23.53125 0-42.667969 19.13281275-42.667969 42.66406275v384c0 18.21875 11.605469 34.496093 29.054688 40.554687l128.386718 42.796875c4.351563 1.34375 8.679688 1.984375 13.226563 1.984375 23.53125 0 42.664062-19.136718 42.664062-42.667968v-21.332032h64c35.285157 0 64-28.714844 64-64v-85.335937c0-11.773438-9.535156-21.332031-21.332031-21.332031zm0 0">
+                </path>
+                <path
+                    d="m505.75 198.253906-85.335938-85.332031c-6.097656-6.101563-15.273437-7.9375-23.25-4.632813-7.957031 3.308594-13.164062 11.09375-13.164062 19.714844v64h-85.332031c-11.777344 0-21.335938 9.554688-21.335938 21.332032 0 11.777343 9.558594 21.332031 21.335938 21.332031h85.332031v64c0 8.621093 5.207031 16.40625 13.164062 19.714843 7.976563 3.304688 17.152344 1.46875 23.25-4.628906l85.335938-85.335937c8.339844-8.339844 8.339844-21.824219 0-30.164063zm0 0">
+                </path>
+            </svg></span><span class="u-icon u-icon-circle u-text-palette-1-base u-icon-2" data-href="stAC.html"><svg
+                class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 55 55" style="">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3350"></use>
+            </svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-3350"
+                style="enable-background:new 0 0 55 55;">
+                <path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
+c0.058,0.049,0.121,0.089,0.179,0.137c0.474,0.393,0.965,0.766,1.465,1.127c0.162,0.117,0.324,0.234,0.489,0.348
+c0.534,0.368,1.082,0.717,1.642,1.048c0.122,0.072,0.245,0.142,0.368,0.212c0.613,0.349,1.239,0.678,1.88,0.98
+c0.047,0.022,0.095,0.042,0.142,0.064c2.089,0.971,4.319,1.684,6.651,2.105c0.061,0.011,0.122,0.022,0.184,0.033
+c0.724,0.125,1.456,0.225,2.197,0.292c0.09,0.008,0.18,0.013,0.271,0.021C25.998,54.961,26.744,55,27.5,55
+c0.749,0,1.488-0.039,2.222-0.098c0.093-0.008,0.186-0.013,0.279-0.021c0.735-0.067,1.461-0.164,2.178-0.287
+c0.062-0.011,0.125-0.022,0.187-0.034c2.297-0.412,4.495-1.109,6.557-2.055c0.076-0.035,0.153-0.068,0.229-0.104
+c0.617-0.29,1.22-0.603,1.811-0.936c0.147-0.083,0.293-0.167,0.439-0.253c0.538-0.317,1.067-0.648,1.581-1
+c0.185-0.126,0.366-0.259,0.549-0.391c0.439-0.316,0.87-0.642,1.289-0.983c0.093-0.075,0.193-0.14,0.284-0.217l0.915-0.764
+l-0.027-0.023C51.523,42.802,55,35.55,55,27.5z M2,27.5C2,13.439,13.439,2,27.5,2S53,13.439,53,27.5
+c0,7.577-3.325,14.389-8.589,19.063c-0.294-0.203-0.59-0.385-0.893-0.537l-8.467-4.233c-0.76-0.38-1.232-1.144-1.232-1.993v-2.957
+c0.196-0.242,0.403-0.516,0.617-0.817c1.096-1.548,1.975-3.27,2.616-5.123c1.267-0.602,2.085-1.864,2.085-3.289v-3.545
+c0-0.867-0.318-1.708-0.887-2.369v-4.667c0.052-0.52,0.236-3.448-1.883-5.864C34.524,9.065,31.541,8,27.5,8
+s-7.024,1.065-8.867,3.168c-2.119,2.416-1.935,5.346-1.883,5.864v4.667c-0.568,0.661-0.887,1.502-0.887,2.369v3.545
+c0,1.101,0.494,2.128,1.34,2.821c0.81,3.173,2.477,5.575,3.093,6.389v2.894c0,0.816-0.445,1.566-1.162,1.958l-7.907,4.313
+c-0.252,0.137-0.502,0.297-0.752,0.476C5.276,41.792,2,35.022,2,27.5z"></path>
+            </svg></span>
+        <p class="u-align-center u-text u-text-1">
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
+                href="stAC.html" data-page-id="529714637">Lin Yijun</a>
+        </p>
+    </div>
+</header>
+  <div class="u-content-layout u-sheet">
+    <aside class="u-hidden-xl u-indent-100 u-sidebar u-spacing-0 u-block-da40-1">
+      <div class="u-block u-indent-30 u-block-da40-2">
+        <div class="u-block-container u-clearfix">
+          <h5 class="u-block-header u-text u-block-da40-3"></h5>
+          <div class="u-block-content u-text u-block-da40-4"></div>
+        </div>
+      </div>
+      <div class="u-block u-indent-30 u-block-da40-5">
+        <div class="u-block-container u-clearfix">
+          <h5 class="u-block-header u-text u-block-da40-6"></h5>
+          <div class="u-block-content u-text u-block-da40-7"></div>
+        </div>
+      </div>
+      <div class="u-block u-indent-30 u-block-da40-8">
+        <div class="u-block-container u-clearfix">
+          <h5 class="u-block-header u-text u-block-da40-9"></h5>
+          <div class="u-block-content u-text u-block-da40-10"></div>
+        </div>
+      </div>
+      <style data-mode="XL">
+        .u-block-da40-1 {
+          flex-basis: auto;
+          width: 141px;
+        }
+
+        .u-block-da40-3 {
+          font-size: 1.125rem;
+          line-height: 2;
+        }
+
+        .u-block-da40-4 {
+          font-size: 0.875rem;
+          line-height: 2;
+        }
+
+        .u-block-da40-6 {
+          font-size: 1.125rem;
+          line-height: 2;
+        }
+
+        .u-block-da40-7 {
+          font-size: 0.875rem;
+          line-height: 2;
+        }
+
+        .u-block-da40-9 {
+          font-size: 1.125rem;
+          line-height: 2;
+        }
+
+        .u-block-da40-10 {
+          font-size: 0.875rem;
+          line-height: 2;
+        }
+      </style>
+      <style data-mode="LG"></style>
+      <style data-mode="MD"></style>
+      <style data-mode="SM"></style>
+      <style data-mode="XS"></style>
+    </aside>
+    <div class="u-content">
+      <h1 class="center">Class Allocation<a class="tooltip2">ⓘ
+          <span class="tooltiptext2">
+            <p>• Your can view you class information </p>
+          </span>
+        </a></h1>
+      <br><br>
+
+
+
+
+
+
+
+      <!--classAdder-->
+
+      <div id="classAdder" title="Add Class">
+
+        <div class="centerThings">
+
+          <h3 class="wordHolder">Enter The information Below:</h3>
+          <br>
+          <p class="wordHolder">AY:21/22</p><br>
+
+
+          <!--
+
+          <div class="styled-input1">
+            <input type="text" id="classnameinput" required />
+            <label>Enter Class Name:</label>
+            <span></span>
+          </div>
+
+          <br>
+-->
+
+
+
+
+
+          <label for="classes" class="textareaThings2">Select Class:</label><br>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <select name="classes" id="classes" class="textareaThings2">
+            <option disabled selected>Please pick one</option>
+            <option>1A</option>
+            <option>1B</option>
+            <option>1C</option>
+            <option>1D</option>
+            <option>2A</option>
+            <option>2B</option>
+            <option>2C</option>
+            <option>2D</option>
+            <option>3A</option>
+            <option>3B</option>
+            <option>3C</option>
+            <option>3D</option>
+            <option>4A</option>
+            <option>4B</option>
+            <option>4C</option>
+            <option>4D</option>
+            <option>5A</option>
+            <option>5B</option>
+            <option>5C</option>
+            <option>5D</option>
+            <option>6A</option>
+            <option>6B</option>
+            <option>6C</option>
+            <option>6D</option>
+
+
+          </select>
+
+          <br>
+
+          <div class="styled-input1">
+            <input class="inputTmp" type="text" id="classnameinput" required />
+            <label>Enter Class Teacher Name:</label>
+            <span></span>
+          </div>
+
+
+          <br>
+          <br>
+          <label class="textareaThings2">Enter Class Description <a class="tooltip2">ⓘ
+              <span class="tooltiptext2">
+                <p>As short as posible. </p>
+                <p>e.g. AY21/22 1C </p>
+                <p>e.g. This is a elite class. </p>
+              </span>
+            </a>:</label>
+          <div class="textareaThings">
+
+            <textarea rows="4" cols="50" class="classDesc" id="textareathings" placeholder="e.g. AY19/20 1C,Elite Class"
+              required></textarea>
+
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <!--VIEW-->
+      <div id="ViewDia" title="Class Detail">
+        <table class="tablesort" id="datatable" style="width: 50%;">
+          <thead>
+            <h1 class="wordHolder2" style="background-color: gainsboro;">Class Student list:</h1>
+            <tr class="header">
+
+              <th>Class No.⇅</th>
+              <th>Name⇅</th>
+
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td>01</td>
+              <td>Chan Tai Man	</td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>Man Tai Chan	</td>
+            </tr>
+            <tr>
+              <td>03</td>
+              <td>Tai Man Chan	</td>
+            </tr>
+            <tr>
+              <td>04</td>
+              <td>Ng Chun Yin	</td>
+            </tr>
+            <tr>
+              <td>05</td>
+              <td>Wong man	</td>
+            </tr>
+            <tr>
+              <td>06</td>
+              <td>Pu pok	</td>
+            </tr>
+            <tr>
+              <td>07</td>
+              <td>Yuk zi tong	</td>
+            </tr>
+            <tr>
+              <td>08</td>
+              <td>Tong Ka Ming	</td>
+            </tr>
+            <tr>
+              <td>09</td>
+              <td>Yu Ka Lok	</td>
+            </tr>
+
+            <tr>
+              <td>10</td>
+              <td>Lam Hei	</td>
+            </tr>
+
+            <tr>
+              <td>11</td>
+              <td>Fan Cheuk Pan	</td>
+            </tr>
+
+            <tr>
+              <td>12</td>
+              <td>Chan Yik Chun	</td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>Chan Yik Hin	</td>
+            </tr>
+
+            <tr>
+              <td>14</td>
+              <td>Chan Tze Hin	</td>
+            </tr>
+
+            <tr>
+              <td>15</td>
+              <td>Bon Kong</td>
+            </tr>
+
+            <tr>
+              <td>16</td>
+              <td>Ming Jai</td>
+            </tr>
+
+            <tr>
+              <td>17</td>
+              <td>Poon Wing	</td>
+            </tr>
+
+
+
+          </tbody>
+
+        </table>
+        <h1 class="wordHolder2" style="background-color: gainsboro;">Class detail:</h1>
+        <br>
+        <h2  class="wordHolder2" >Class code: C8463</h2>
+        <h2  class="wordHolder2">Classroom: R101</h2><br>
+        <h3 class="wordHolder2">TIME TABLE</h3>
+        <table border="5" cellspacing="0" align="center">
+          <!--<caption>Timetable</caption>-->
+          <tr>
+            <td align="center" height="50" width="100"><br>
+              <b>Day/Period</b></br>
+            </td>
+            <td align="center" height="50" width="100">
+              <b>I<br>9:30-10:20</b>
+            </td>
+            <td align="center" height="50" width="100">
+              <b>II<br>10:20-11:10</b>
+            </td>
+            <td align="center" height="50" width="100">
+              <b>III<br>11:10-12:00</b>
+            </td>
+            <td align="center" height="50" width="100">
+              <b>12:00-12:40</b>
+            </td>
+            <td align="center" height="50" width="100">
+              <b>IV<br>12:40-1:30</b>
+            </td>
+            <td align="center" height="50" width="100">
+              <b>V<br>1:30-2:20</b>
+            </td>
+            <td align="center" height="50" width="100">
+              <b>VI<br>2:20-3:10</b>
+            </td>
+            <td align="center" height="50" width="100">
+              <b>VII<br>3:10-4:00</b>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" height="50">
+              <b>Monday</b>
+            </td>
+            <td align="center" height="50">Eng</td>
+            <td align="center" height="50">Mat</td>
+            <td align="center" height="50">Che</td>
+            <td rowspan="6" align="center" height="50">
+              <h2>L<br>U<br>N<br>C<br>H</h2>
+            </td>
+            <td colspan="3" align="center" height="50">LAB</td>
+            <td align="center" height="50">Phy</td>
+          </tr>
+          <tr>
+            <td align="center" height="50">
+              <b>Tuesday</b>
+            </td>
+            <td colspan="3" align="center" height="50">LAB
+            </td>
+            <td align="center" height="50">Eng</td>
+            <td align="center" height="50">Che</td>
+            <td align="center" height="50">Mat</td>
+            <td align="center" height="50">SPORTS</td>
+          </tr>
+          <tr>
+            <td align="center" height="50">
+              <b>Wednesday</b>
+            </td>
+            <td align="center" height="50">Mat</td>
+            <td align="center" height="50">phy</td>
+            <td align="center" height="50">Eng</td>
+            <td align="center" height="50">Che</td>
+            <td colspan="3" align="center" height="50">LIBRARY
+            </td>
+          </tr>
+          <tr>
+            <td align="center" height="50">
+              <b>Thursday</b>
+            </td>
+            <td align="center" height="50">Phy</td>
+            <td align="center" height="50">Eng</td>
+            <td align="center" height="50">Che</td>
+            <td colspan="3" align="center" height="50">LAB
+            </td>
+            <td align="center" height="50">Mat</td>
+          </tr>
+          <tr>
+            <td align="center" height="50">
+              <b>Friday</b>
+            </td>
+            <td colspan="3" align="center" height="50">LAB
+            </td>
+            <td align="center" height="50">Mat</td>
+            <td align="center" height="50">Che</td>
+            <td align="center" height="50">Eng</td>
+            <td align="center" height="50">Phy</td>
+          </tr>
+          <tr>
+            <td align="center" height="50">
+              <b>Saturday</b>
+            </td>
+            <td align="center" height="50">Eng</td>
+            <td align="center" height="50">Che</td>
+            <td align="center" height="50">Mat</td>
+            <td colspan="3" align="center" height="50">SEMINAR
+            </td>
+            <td align="center" height="50">SPORTS</td>
+          </tr>
+        </table>
+
+      </div>
+
+      <!--MANAGE-->
+
+      <script>
+        function moveRight(leftValue, rightValue) {
+          //alert("Elft value is t : "+leftValue);
+          var leftSelect = document.forms["form1"].elements[leftValue];
+          var rightSelect = document.forms["form1"].elements[rightValue];
+          //alert("test : " + document.forms["form1"].elements[myLeftId].options[selItem].value);
+          if (leftSelect.selectedIndex == -1) {
+            window.alert("You must first select an item on the left side.")
+          } else {
+            var option = leftSelect.options[leftSelect.selectedIndex];
+            rightSelect.appendChild(option);
+          }
+        }
+      </script>
+      <div id="ManDia" title="Manage Class">
+        <h1 class="wordHolder2"style="background-color: gainsboro;">Class Student manager:</h1>
+        <div>
+
+          <form name="form1" id="form1" onsubmit="return false;">
+
+            <div class="styled-input2">
+
+              <input type="text" />
+              <label>🔍️Filter</label>
+              <span></span>
+
+            </div>
+            <table width="90%" class="classpeopleadd" style="margin-left: 5%;margin-right: 5%;">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Student in School:
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Student in 2C:&nbsp;&nbsp;&nbsp;&nbsp;
+              <button id="adminStuList">Load Student List from database</button>
+              &nbsp;&nbsp;&nbsp;&nbsp; <button id="clearList">Clear</button>
+              <tr>
+
+                <td>
+                  <select id="leftProcess" name="leftProcess" size="15 width=100%">
+
+                    <option value="" disabled>Volvo</option>
+                    <option value="">Saab</option>
+                    <option value="">Opel</option>
+                    <option value="">Audi</option>
+                    <option value="" disabled>Noah</option>
+                    <option value="">Oliver</option>
+                    <option value="" disabled>Elijah</option>
+                    <option value="">William</option>
+                    <option value="">James</option>
+                    <option value="" disabled>Benjamin</option>
+                    <option value="">Lucas</option>
+                    <option value="">Henry</option>
+                    <option value="">Olivia</option>
+                    <option value="">Emma</option>
+                    <option value="" disabled>Ava</option>
+                    <option value="">Charlotte</option>
+                    <option value="" disabled>Sophia</option>
+                    <option value="">Amelia</option>
+                    <option value="">Isabella</option>
+                    <option value="">Mia</option>
+                    <option value="">Harper</option>
+                  </select>
+                </td>
+                <td>
+                  <button onclick="moveRight('leftProcess','rightProcess');">>></button>
+                  <br />
+                  <button onclick="moveRight('rightProcess','leftProcess')">
+                    <<
+                      </button>
+                </td>
+                <td>
+                  <select id="rightProcess" name="rightProcess" size="15" width="100%">
+                    <option value="3"></option>
+
+
+                  </select>
+                </td>
+
+              </tr>
+            </table>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Why there is some student cannot be selected?
+            <a class="tooltip2">ⓘ
+              <span class="tooltiptext2">
+                <p>Because those student might be alreay in other class.</p>
+                <p>If you want to add them in your class, please find admin.</p>
+              </span>
+            </a>
+            <br>
+          </form>
+        </div>
+
+      </div>
+
+      <!--EDIT-->
+      <div id="EditDia" title="Edit Class Information">
+        <h1 class="wordHolder2" style="background-color: gainsboro;">Class Information:</h1><br>
+        <div class="styled-input1">
+          <input type="text" id="classnameinput" required value="Chan Tai Man" />
+          <label>Enter Class Teacher Name:</label>
+          <span></span>
+        </div>
+
+
+        <br>
+        <br>
+        <label class="textareaThings2">Enter Class Description <a class="tooltip2">ⓘ
+            <span class="tooltiptext2">
+              <p>As short as posible. </p>
+              <p>e.g. AY21/22 1C </p>
+              <p>e.g. This is a elite class. </p>
+            </span>
+          </a>:</label>
+        <div class="textareaThings">
+
+          <textarea rows="4" cols="50" class="classDesc" id="textareathings" placeholder="e.g. AY19/20 1C,Elite Class"
+            required>
+AY21/22 2C, 
+math elite class, 
+two student need special care.
+          </textarea>
+
+          <span></span>
+        </div>
+      </div>
+
+      <!--success message-->
+      <div id="successDia" title="CreateSuccessful">
+        <p>Create successful!</p>
+        <p>The dialog box will close in 3 seconds automatically...</p>
+      </div>
+
+      <!--save message-->
+      <div id="savesuccessDia" title="Edit Successful">
+        <p>Edit successful!</p>
+        <p>The dialog box will close in 3 seconds automatically...</p>
+      </div>
+
+      <!--change message-->
+      <div id="changeDia" title="Change Successful">
+        <p>Change successful!</p>
+        <p>The dialog box will close in 3 seconds automatically...</p>
+      </div>
+
+      <h2 class="center" id="YOURCLASS">All Classes:</h2>
+
+      <div class="styled-input">
+
+        <input type="text" required />
+        <label>🔍️Filter</label>
+        <span></span>
+
+      </div>
+
+
+      <br><br>
+
+      <table class="tablesort" id="datatable">
+        <thead>
+
+          <tr class="header">
+
+            <th>AY📅⇅</th>
+            <th>Class👨‍🏫⇅</th>
+            <th><a class="tooltip">ⓘ
+                <span class="tooltiptext">
+                  <p>Active: The class is on going.</p>
+                  <p>Canceled: Class canceled because not enough student.</p>
+                  <p>Archived: The class closed by admin.</p>
+                </span>
+              </a> Status🗨️⇅</th>
+            <th><a class="tooltip">ⓘ
+                <span class="tooltiptext">
+                  <p>View: View Class detail and Student list,</p>
+                  <p>Manage: Add/Drop students to class </p>
+                  <p>Edit: Edit Class information</p>
+                </span>
+              </a>Action🔧</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+           
+            <td>21/22</td>
+            <td>3B</td>
+            <td><button class="statusBarAct">Active</button></td>
+            <td><button class="buttonTD">View</button></td>
+          </tr>
+          <tr>
+            
+            <td>20/21</td>
+            <td>2D</td>
+            <td><button class="statusBarArc">Archived</button></td>
+            <td><button class="buttonTD">View</button></td>
+          </tr>
+          <tr>
+            
+            <td>19/20</td>
+            <td>1C</td>
+            <td><button class="statusBarArc">Archived</button></td>
+               <td><button class="buttonTD">View</td>
+
+          </tr>
+
+
+        </tbody>
+
+      </table>
+      <div class="noRec"></div>
+      <h4>Hover on the
+        <a class="tooltip2">ⓘ
+          <span class="tooltiptext2">
+            <p>There are many sign like this in this page that can help you</p>
+
+          </span>
+        </a>
+        to get more help!
+      </h4>
+      <p></p>
+      <br><br><br><br><br><br><br>
+      </p>
+      </section>
+    </div>
+  </div>
+<br><br>
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-2cf8">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1"> Copyright (c) the Man Secondary School 2021. All
+        rights reserved.</p>
+    </div>
+  </footer>
+
+
+
+
+
+</body>
+
+</html>
